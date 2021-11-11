@@ -83,6 +83,7 @@ public class Controleur implements ActionListener, KeyListener, Data{
             case KeyEvent.VK_Z:
             case KeyEvent.VK_8:    
                 perso.deplacementHaut();
+                /**/
                 //panelNiveau.setScore(panelNiveau.getScore()+10);  
                 break;
             case KeyEvent.VK_DOWN:  
