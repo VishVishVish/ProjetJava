@@ -33,7 +33,7 @@ public class PanelGrille extends JPanel implements Data {
        
        for(int li = 0; li<grille.getNbrLigne();li++){
             for(int co = 0; co<grille.getNbrColonne();co++){
-                JLabel labelCaseGrille = convertToJLabel(grille.getGrille()[li][co]);
+                JLabel labelCaseGrille = convertToJLabel(grille.getGrilleChar()[li][co]);
                 //labelCaseGrille.setSize(50,50);
                 
               
@@ -49,20 +49,25 @@ public class PanelGrille extends JPanel implements Data {
         JLabel label = new JLabel(); 
         switch(caractere){
             case Data.ICE_N :
-                label.setBackground(Color.WHITE);
+                //label.setBackground(Color.WHITE);
+                
+                label.setIcon(Data.IMG_ICE_N);
                 break;
             case Data.WATER :
-                label.setBackground(Color.BLUE);
+                label.setIcon(Data.IMG_WATER);
+                //label.setBackground(Color.BLUE);
                 break;    
             case Data.BLOCK :
                 label.setBackground(Color.BLACK);
+                label.setIcon(Data.IMG_BLOCK);
                 break;    
             case Data.PERSO :
                 //label.setBackground(Color.RED);
                 label.setIcon(Data.IMG_PERSO);
                 break;
             case Data.ICE_S :
-                label.setBackground(Color.GRAY);
+                //label.setBackground(Color.GRAY);
+                label.setIcon(Data.IMG_ICE_S);
                 break;
             case Data.EXIT :
                 label.setBackground(Color.GREEN);
@@ -72,6 +77,7 @@ public class PanelGrille extends JPanel implements Data {
                 break;
         }
         label.setOpaque(true);
+        label.setSize(new Dimension(100,100));
         return label;
     }
     
@@ -81,7 +87,7 @@ public class PanelGrille extends JPanel implements Data {
         this.removeAll();
         for(int li = 0; li<grille.getNbrLigne();li++){
             for(int co = 0; co<grille.getNbrColonne();co++){
-                 this.add(this.convertToJLabel(grille.getGrille()[li][co]));
+                 this.add(this.convertToJLabel(grille.getGrilleChar()[li][co]));
             }
         }   
     }

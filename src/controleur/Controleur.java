@@ -22,7 +22,10 @@ public class Controleur implements ActionListener, KeyListener, Data{
     PanelMenu panelMenu;
     PanelNiveau panelNiveau;
     PanelGrille panelGrille;
+    PanelControle panelControle;
     Grille grille;
+    
+   
     Personnage perso;
     Fenetre fenetre;
     /**
@@ -63,7 +66,40 @@ public class Controleur implements ActionListener, KeyListener, Data{
             case "EXIT":
                 System.exit(0); //pour fermer l'application
             case "RESET":
-                panelNiveau.getPanelGrille().removeAll();                
+                int niveau = 1;
+                grille = new Grille(niveau);           
+                int posX = Data.POS_PERSO[niveau][0];
+                int posY = Data.POS_PERSO[niveau][1];
+                perso = new Personnage(posX,posY,Data.PERSO);       
+                grille.setGrilleChar(perso.setPosition(grille));            
+                panelNiveau.setGrille(grille);     
+                
+                
+                break;
+            case "\u25B2":
+                System.out.println("deplacement haut effectué");
+                perso.deplacementHaut();
+                grille.setGrilleChar(perso.newPosition(grille));
+                panelNiveau.setGrille(grille);            
+                break;
+            case "\u25BA":
+                System.out.println("deplacement droite effectué");
+                perso.deplacementDroite();
+                grille.setGrilleChar(perso.newPosition(grille));
+                panelNiveau.setGrille(grille);        
+                break;
+            case "\u25BC":
+                System.out.println("deplacement bas effectué");
+                perso.deplacementBas();
+                grille.setGrilleChar(perso.newPosition(grille));
+                panelNiveau.setGrille(grille);        
+                //panelNiveau.revalidate(); 
+                break;
+            case "\u25C4":
+                System.out.println("deplacement gauche effectué");
+                perso.deplacementGauche();
+                grille.setGrilleChar(perso.newPosition(grille));
+                panelNiveau.setGrille(grille);        
                 break;
             default:
                 System.out.println("evt detecté mais non traité");
@@ -109,7 +145,7 @@ public class Controleur implements ActionListener, KeyListener, Data{
         grille.setGrilleChar(perso.newPosition(grille));
         
         if(perso.getCaseGrille()==Data.EXIT){ // permet de passer au niveau suivant lorsque 
-            //System.out.println("fin niveau"); // le personnage est sur une case exit        
+            //System.out.println("fin niveau"); // le personnage est sur une case exit 
             int niveau = panelNiveau.getNumNiveau()+1; //PAS TOUCHER
             panelNiveau.setNumNiveau(niveau);           
             grille = new Grille(niveau);           
@@ -117,10 +153,13 @@ public class Controleur implements ActionListener, KeyListener, Data{
             int posY = Data.POS_PERSO[niveau][1];
             perso = new Personnage(posX,posY,Data.PERSO);       
             grille.setGrilleChar(perso.setPosition(grille));            
-            panelNiveau.setGrille(grille);       
+            panelNiveau.setGrille(grille);     
+            
         } 
         panelNiveau.setGrille(grille);        
-        panelNiveau.revalidate(); 
+        panelNiveau.revalidate();
+        
+        //grille.affichageGrille();
     }
 
     @Override

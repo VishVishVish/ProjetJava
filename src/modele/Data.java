@@ -26,12 +26,17 @@ public interface Data {
     public char ICE_S = 'o'; // banquise epais, S pour strong 
     public char EXIT = 'S';
     
-    public ImageIcon IMG_PERSO = new ImageIcon("img/ping2.png");
-    public ImageIcon IMG_BLOCK = new ImageIcon();
-    public ImageIcon IMG_WATER = new ImageIcon();
-    public ImageIcon IMG_ICE_N = new ImageIcon();
-    public ImageIcon IMG_INE_S = new ImageIcon();
+    public ImageIcon TEST = new ImageIcon("img/test.png");
+    public ImageIcon IMG_PERSO = new ImageIcon("img/perso.png");
+    public ImageIcon IMG_BLOCK = new ImageIcon("img/block.png");
+    public ImageIcon IMG_WATER = new ImageIcon("img/water.png");
+    public ImageIcon IMG_ICE_N = new ImageIcon("img/ice_n.png");
+    public ImageIcon IMG_ICE_S = new ImageIcon("img/ice_s.png");
     public ImageIcon IMG_EXIT = new ImageIcon();
+    
+    public Color COLOR_SNOW = new Color(174,255,255);
+    public Color COLOR_ICE = new Color(5,100,255);
+    public Color COLOR_BACK = new Color(58,220,254);
     
                      
    public char LEVEL_5 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
@@ -143,6 +148,8 @@ public interface Data {
     
    
     char LEVELS [][][] = {LEVEL_0,LEVEL_1,LEVEL_2,LEVEL_3,LEVEL_4,LEVEL_5 };
+    
+ 
     /*position du perso dans la grille de chaque niveau*/
     int POS_PERSO [][] = {{1,1},{1,1},{1,2},{1,3},{1,1},{1,1}};
     

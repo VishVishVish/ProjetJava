@@ -33,7 +33,7 @@ public class Personnage extends Case implements Data {
     
     public char[][] newPosition(Grille grille){
         
-        char grilleChar [][] = grille.getGrille();
+        char grilleChar [][] = grille.getGrilleChar();
         
         if(grilleChar[newPosX][newPosY]==Data.WATER || grilleChar[newPosX][newPosY]==Data.BLOCK){ //bloque le chemin si on veut passer sur l'eau
             newPosX = posX;
@@ -63,7 +63,7 @@ public class Personnage extends Case implements Data {
     }
     
     public char[][] setPosition(Grille grilleNiveau){
-        char[][] grille = grilleNiveau.getGrille();
+        char[][] grille = grilleNiveau.getGrilleChar();
         caseGrille = grille[posX][posY];
         grille[posX][posY] = caractere;
         return grille;

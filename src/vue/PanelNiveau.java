@@ -26,80 +26,60 @@ public class PanelNiveau extends JPanel implements Data{
     JLabel labelTemps = new JLabel("Temps : 00:00");
     JLabel labelScore = new JLabel("Score :" + score);
     
-    boolean finNiveau;
+    
 
     Grille grille;
+    Grille saveGrille;//permet de stocker la grille actif
     Personnage perso;
     
-    JPanel panelHaut;
-    PanelGrille panelMilieu;
-    JPanel panelBas;
     
-    JButton boutonReset = new JButton("RESET");
-    
+    PanelGrille panelGrille;
+    PanelControle panelControle;
+        
     public PanelNiveau(){
         grille = new Grille();
-        finNiveau = false;
-        boutonReset.setFocusable(false);
-        
-        //on modifie la grille du niveau
-        grille.setGrilleChar(Data.LEVELS[numNiveau]);
-        
-        int posX = Data.POS_PERSO[numNiveau][0];
-        int posY = Data.POS_PERSO[numNiveau][1];
-        perso = new Personnage(posX,posY,Data.PERSO);// à changer
-        grille.setGrilleChar(perso.setPosition(grille));
-        /*
-        grille.initGrille('.');
-        grille.setGrille(perso.setPosition(grille));
-        grille.setCase(5,5,Data.BLOCK);
-        grille.setCase(5,6,Data.BLOCK);
-        grille.setCase(5,7,Data.BLOCK);
-        grille.setCase(13,13,Data.EXIT);*/
-        
-        panelHaut = new JPanel(new BorderLayout());
-        panelMilieu = new PanelGrille(grille);
-        panelBas = new JPanel(new BorderLayout());
-        
-        //on ajoute des couleurs de fond
-        panelHaut.setBackground(Color.cyan);
-        panelMilieu.setBackground(Color.GRAY);
-        panelBas.setBackground(Color.cyan);
+        panelControle = new PanelControle();
+        setNiveau(numNiveau);
+        panelGrille = new PanelGrille(grille);
         
         
-        //On configure la partie haut su niveau contenant le temps, le titre et le score 
-        panelHaut.add(labelTemps, BorderLayout.WEST);
-        panelHaut.add(labelTitre, BorderLayout.CENTER);
-        panelHaut.add(labelScore, BorderLayout.EAST);
-
-
-        //On configure la partie du bas du niveau contenant le bouton pause
-        panelBas.add(boutonReset, BorderLayout.LINE_START);
         
         setLayout(new BorderLayout());
         
-        this.add(panelHaut, BorderLayout.NORTH);
-        this.add(panelMilieu, BorderLayout.CENTER);
-        this.add(panelBas, BorderLayout.SOUTH);    
+        //panelGrille.setSize(new Dimension(19*60,15*60));
+        
+        this.add(panelGrille, BorderLayout.CENTER);
+        this.add(panelControle, BorderLayout.EAST);    
     }
     
-    
     public void enregistreEcouteur(Controleur controleur) {
-        //this.addKeyListener(controleur);
-        boutonReset.addActionListener(controleur);
+        panelControle.enregistreEcouteur(controleur);
     }
     
     public void setGrille(Grille grille){
-        panelMilieu.removeAll();
-        panelMilieu.setGrille(grille);
-        panelMilieu.revalidate();
+        panelGrille.removeAll();
+        panelGrille.setGrille(grille);
+        panelGrille.revalidate();
         //panelMilieu.repaint();
     }
+    
+    public void setNiveau(int numNiveau){
+        grille.setGrilleChar(Data.LEVELS[this.numNiveau]);   
+        int posX = Data.POS_PERSO[this.numNiveau][0];
+        int posY = Data.POS_PERSO[this.numNiveau][1];
+        perso = new Personnage(posX,posY,Data.PERSO);// à changer
+        grille.setGrilleChar(perso.setPosition(grille));
+        
+        panelControle.setNumNiveau(numNiveau);
+        panelControle.setLabelNiveau();
+    }
+    
+   
     
     
     
     public PanelGrille getPanelGrille(){
-        return panelMilieu;
+        return panelGrille;
     }
     
     public Personnage getPersonnage(){
@@ -114,13 +94,7 @@ public class PanelNiveau extends JPanel implements Data{
         this.score = score;    
     }
     
-    public boolean getFinNiveau(){
-        return finNiveau;
-    }
     
-    public void setFinNiveau(boolean finNiveau){
-        this.finNiveau = finNiveau;
-    }
     
     public int getNumNiveau(){
         return numNiveau;

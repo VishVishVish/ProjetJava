@@ -18,6 +18,8 @@ public class Main {
         Fenetre fenetre = new Fenetre();
         
         fenetre.setContentPane(panelMenu);
+        //fenetre.pack();
+        //System.out.println(fenetre.getHeight());
         Controleur controleur = new Controleur(panelMenu, panelNiveau, fenetre);
         
         
