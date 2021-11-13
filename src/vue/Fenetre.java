@@ -5,9 +5,11 @@
  */
 package vue;
 import controleur.Controleur;
+
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
+import modele.Data;
 
 /**
  *
@@ -17,16 +19,15 @@ public class Fenetre extends JFrame {
     
     public Fenetre(){
         super("Fenêtre de jeu");
-        setSize(1000,700);
         
+        
+        this.setIconImage(Data.IMG_PERSO.getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//stop l'application lors de la fermeture de la fenêtre
-        //setLayout(new BorderLayout());
         
-        //setFocusable(false);
-        //this.setLayout(null);
-        
-        this.setLocation(600, 50); //place la fenêtre lors de son affichage
-       
+        this.setSize(new Dimension(1462,947));
+        this.setLocation(200, 50); //place la fenêtre lors de son affichage
+        //this.setContentPane(new PanelNiveau());
+        //pack();
         setVisible(true);
         
     }
