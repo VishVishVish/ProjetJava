@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 import modele.Data;
 import modele.Grille;
 import modele.Personnage;
@@ -53,7 +55,20 @@ public class Controleur implements ActionListener, KeyListener, Data{
     public void actionPerformed(ActionEvent evt) {
         switch (evt.getActionCommand()) {
             case "START":
-                fenetre.setFenetre(panelNiveau);     
+                fenetre.setFenetre(panelNiveau);   
+                Timer chrono = new Timer();
+                chrono.schedule(new TimerTask(){
+                            
+                    @Override
+                    public void run(){
+                        System.out.println("Temps :" + panelNiveau.getTemps());
+                        //panelNiveau.setTemps(panelNiveau.getTemps()+1);
+                        PanelControle x = panelNiveau.getPanelControle();
+                        x.setTemps(x.getTemps()+1);
+                        x.setLabelTemps();
+                        panelNiveau.setPanelControle(x);
+                    }
+                },1000,1000);
                 break;
             case "CONTINUE":
                 break;
