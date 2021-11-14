@@ -22,10 +22,6 @@ public class PanelNiveau extends JPanel implements Data{
     private int numNiveau = 1;
     
     
-    JLabel labelTitre = new JLabel("Niveau du jeu" + numNiveau, JLabel.CENTER);
-    JLabel labelTemps = new JLabel("Temps : 00:00");
-    JLabel labelScore = new JLabel("Score :" + score);
-    
     
 
     Grille grille;
@@ -46,8 +42,6 @@ public class PanelNiveau extends JPanel implements Data{
         
         setLayout(new BorderLayout());
         
-        //panelGrille.setSize(new Dimension(19*60,15*60));
-        
         this.add(panelGrille, BorderLayout.CENTER);
         this.add(panelControle, BorderLayout.EAST);    
     }
@@ -64,14 +58,27 @@ public class PanelNiveau extends JPanel implements Data{
     }
     
     public void setNiveau(int numNiveau){
+        this.numNiveau = numNiveau;
         grille.setGrilleChar(Data.LEVELS[this.numNiveau]);   
         int posX = Data.POS_PERSO[this.numNiveau][0];
         int posY = Data.POS_PERSO[this.numNiveau][1];
-        perso = new Personnage(posX,posY,Data.PERSO);// à changer
-        grille.setGrilleChar(perso.setPosition(grille));
-        
+        perso = new Personnage(posX,posY,Data.PERSO);
+        grille.setGrilleChar(perso.setPosition(grille)); 
         panelControle.setNumNiveau(numNiveau);
         panelControle.setLabelNiveau();
+        
+    }
+    
+    public void resetNiveau(){
+        
+        grille.setGrilleChar(Data.LEVELS[this.numNiveau]);   
+        int posX = Data.POS_PERSO[this.numNiveau][0];
+        int posY = Data.POS_PERSO[this.numNiveau][1];
+        perso = new Personnage(posX,posY,Data.PERSO);
+        grille.setGrilleChar(perso.setPosition(grille)); 
+        //panelControle.setNumNiveau(numNiveau);
+        //panelControle.setLabelNiveau();
+        
     }
     
    
@@ -102,6 +109,14 @@ public class PanelNiveau extends JPanel implements Data{
     
     public void setNumNiveau(int numNiveau){
         this.numNiveau = numNiveau;
+    }
+    
+    public PanelControle getPanelControle(){
+        return panelControle;
+    }
+    
+    public void setPanelControle( PanelControle panelControle){
+        this.panelControle = panelControle;
     }
    
 }

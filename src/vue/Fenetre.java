@@ -15,7 +15,7 @@ import modele.Data;
  *
  * @author vishn
  */
-public class Fenetre extends JFrame {
+public class Fenetre extends JFrame implements Data{
     
     public Fenetre(){
         super("Fenêtre de jeu");
@@ -29,6 +29,7 @@ public class Fenetre extends JFrame {
         //this.setContentPane(new PanelNiveau());
         //pack();
         setVisible(true);
+       
         
     }
     

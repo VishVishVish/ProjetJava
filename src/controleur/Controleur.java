@@ -22,7 +22,7 @@ public class Controleur implements ActionListener, KeyListener, Data{
     PanelMenu panelMenu;
     PanelNiveau panelNiveau;
     PanelGrille panelGrille;
-    PanelControle panelControle;
+   
     Grille grille;
     
    
@@ -66,15 +66,10 @@ public class Controleur implements ActionListener, KeyListener, Data{
             case "EXIT":
                 System.exit(0); //pour fermer l'application
             case "RESET":
-                int niveau = 1;
-                grille = new Grille(niveau);           
-                int posX = Data.POS_PERSO[niveau][0];
-                int posY = Data.POS_PERSO[niveau][1];
-                perso = new Personnage(posX,posY,Data.PERSO);       
-                grille.setGrilleChar(perso.setPosition(grille));            
-                panelNiveau.setGrille(grille);     
-                
-                
+                panelNiveau.resetNiveau();
+                panelNiveau.setGrille(grille);
+                perso = panelNiveau.getPersonnage();
+
                 break;
             case "\u25B2":
                 System.out.println("deplacement haut effectué");
@@ -115,6 +110,7 @@ public class Controleur implements ActionListener, KeyListener, Data{
     @Override
     public void keyPressed(KeyEvent key) {
         switch( key.getKeyCode() ) {
+            
             case KeyEvent.VK_UP:
             case KeyEvent.VK_Z:
             case KeyEvent.VK_8:    
@@ -145,19 +141,30 @@ public class Controleur implements ActionListener, KeyListener, Data{
         grille.setGrilleChar(perso.newPosition(grille));
         
         if(perso.getCaseGrille()==Data.EXIT){ // permet de passer au niveau suivant lorsque 
-            //System.out.println("fin niveau"); // le personnage est sur une case exit 
+                       /*                        // le personnage est sur une case exit 
             int niveau = panelNiveau.getNumNiveau()+1; //PAS TOUCHER
-            panelNiveau.setNumNiveau(niveau);           
+            panelNiveau.setNumNiveau(niveau);
+            
+            PanelControle pan = panelNiveau.getPanelControle();//permet de changer l'affichage du niveau (à améliorer) 
+            pan.setNumNiveau(niveau);
+            pan.setLabelNiveau();
+            panelNiveau.setPanelControle(pan);
+            
             grille = new Grille(niveau);           
             int posX = Data.POS_PERSO[niveau][0];
             int posY = Data.POS_PERSO[niveau][1];
             perso = new Personnage(posX,posY,Data.PERSO);       
             grille.setGrilleChar(perso.setPosition(grille));            
             panelNiveau.setGrille(grille);     
+            */
+            panelNiveau.setNiveau(panelNiveau.getNumNiveau()+1);
+            //panelNiveau.setGrille(grille);
+            perso = panelNiveau.getPersonnage();
             
+                       
         } 
         panelNiveau.setGrille(grille);        
-        panelNiveau.revalidate();
+        //panelNiveau.revalidate();
         
         //grille.affichageGrille();
     }

@@ -30,51 +30,46 @@ public class PanelControle extends JPanel implements Data{
     JButton boutonBas = new JButton("\u25BC");
     JButton boutonGauche = new JButton("\u25C4");
     
+    JButton [] boutons = {boutonHaut, boutonDroite, boutonBas, boutonGauche}; // tableau regroupant l'ensemble des boutons de déplacemant
+    
     JButton boutonReset = new JButton("RESET");
     JButton boutonSave = new JButton("SAVE");
     JButton boutonMenu = new JButton("MENU");
         
-    Font fontLabel = new Font("Serif", Font.BOLD, 20);
+    Font fontLabel = new Font("Agency FB", Font.BOLD, 50);
     Font font = new Font("Serif", Font.BOLD, 40);
 
+    
     public PanelControle(){
         numNiveau = 1;
         score = 100;
         temps = 100;
         
-         labelNiveau = new JLabel("Niveau " + numNiveau, JLabel.CENTER);
-         labelTemps = new JLabel("Temps : " + temps, JLabel.CENTER);
-         labelScore = new JLabel("Score : " + score, JLabel.CENTER);
+         labelNiveau = new JLabel("NIVEAU " + numNiveau, JLabel.CENTER);
+         labelTemps = new JLabel("TEMPS : " + temps, JLabel.CENTER);
+         labelScore = new JLabel("SCORE : " + score, JLabel.CENTER);
          
          labelNiveau.setFont(fontLabel);
          labelTemps.setFont(fontLabel);
          labelScore.setFont(fontLabel);
          
-         //On personalise les boutons
-         boutonHaut.setFont(font);
-         boutonGauche.setFont(font);
-         boutonDroite.setFont(font);
-         boutonBas.setFont(font);
+         labelNiveau.setForeground(COLOR_BLUE);
+         labelTemps.setForeground(COLOR_BLUE);
+         labelScore.setForeground(COLOR_BLUE);
          
+        //On personalise les boutons
+        for (JButton bouton : boutons) {
+            bouton.setFont(font);
+            bouton.setBorder(BorderFactory.createLineBorder(COLOR_ICE,4, true));
+            bouton.setBackground(Data.COLOR_SNOW);
+            bouton.setForeground(COLOR_ICE);
+            bouton.setPreferredSize(new Dimension(70,70));
+            bouton.setFocusable(false);
+        }
+        boutonReset.setFocusable(false);
          
-         
-         boutonHaut.setBorder(BorderFactory.createLineBorder(COLOR_ICE,4, true));
-         boutonHaut.setBackground(Data.COLOR_SNOW);
-         boutonHaut.setForeground(COLOR_ICE);
-         boutonHaut.setPreferredSize(new Dimension(70,70));
-         
-         
-         boutonHaut.setFocusable(false);
-         boutonGauche.setFocusable(false);
-         boutonDroite.setFocusable(false);
-         boutonBas.setFocusable(false);
-         boutonMenu.setFocusable(false);
-         boutonReset.setFocusable(false);
-         
-         
-         //labelNiveau.setFont(new Font("Serif", Font.BOLD, 50));
         setLayout(new BorderLayout());
-        this.setBackground(Color.cyan);
+        //this.setBackground(Color.cyan);
         
         //on créé les panels qu'on va ajouter au panelControle
         JPanel panelHaut = new JPanel(new GridLayout(3,1));
@@ -83,8 +78,8 @@ public class PanelControle extends JPanel implements Data{
         
         //on ajoute des couleurs de fond au panels 
         panelHaut.setBackground(Data.COLOR_SNOW);
-        Color color = new Color(58,220,254);
-        panelMilieu.setBackground(color);
+        panelMilieu.setBackground(COLOR_BACK);
+        panelBas.setBackground(Color.BLUE);
         
         //panelHaut//
         panelHaut.add(labelNiveau);
@@ -96,6 +91,7 @@ public class PanelControle extends JPanel implements Data{
   
         //panelMilieu//
         GridBagConstraints gbc = new GridBagConstraints();//on instancie la contrainte
+        gbc.insets = new Insets( 0, 10, 0, 10 );
         gbc.gridx = 1;
         gbc.gridy = 0;       
         panelMilieu.add(boutonHaut,gbc);

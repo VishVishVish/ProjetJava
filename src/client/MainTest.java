@@ -19,6 +19,8 @@ import javax.swing.JFrame;
 public class MainTest extends JFrame implements Data{
  
  public static void  main(String[] args) {
+     
+   ListeFontes list = new ListeFontes();  
   //Créer JFrame
   //JFrame jframe = new JFrame("redimensionnement JFrame");
   //jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +55,7 @@ public class MainTest extends JFrame implements Data{
   grille.affichageGrille();*/
   
   
-  
+  /*
     char tab1 [] [] = Data.LEVEL_1;
     char tab2 [] [] = new char[15][19] ;  
     Grille grille = new Grille(1);
@@ -64,7 +66,7 @@ public class MainTest extends JFrame implements Data{
     grille.affichageGrille();
     
     grille = new Grille(1);
-    grille.affichageGrille();
+    grille.affichageGrille();*/
     //System.arraycopy(tab1,  0, tab2,  0,  2) ;
     //System.arraycopy(tab1, 0, tab2, 0, tab2.length-1);
     
