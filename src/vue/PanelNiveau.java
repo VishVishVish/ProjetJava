@@ -25,7 +25,7 @@ public class PanelNiveau extends JPanel implements Data{
     
 
     Grille grille;
-    Grille saveGrille;//permet de stocker la grille actif
+   
     Personnage perso;
     
     
@@ -37,9 +37,7 @@ public class PanelNiveau extends JPanel implements Data{
         panelControle = new PanelControle();
         setNiveau(numNiveau);
         panelGrille = new PanelGrille(grille);
-        
-        
-        
+ 
         setLayout(new BorderLayout());
         
         this.add(panelGrille, BorderLayout.CENTER);
@@ -65,26 +63,17 @@ public class PanelNiveau extends JPanel implements Data{
         perso = new Personnage(posX,posY,Data.PERSO);
         grille.setGrilleChar(perso.setPosition(grille)); 
         panelControle.setNumNiveau(numNiveau);
-        panelControle.setLabelNiveau();
-        
+        panelControle.setLabelNiveau();    
     }
     
     public void resetNiveau(){
-        
         grille.setGrilleChar(Data.LEVELS[this.numNiveau]);   
         int posX = Data.POS_PERSO[this.numNiveau][0];
         int posY = Data.POS_PERSO[this.numNiveau][1];
         perso = new Personnage(posX,posY,Data.PERSO);
         grille.setGrilleChar(perso.setPosition(grille)); 
-        //panelControle.setNumNiveau(numNiveau);
-        //panelControle.setLabelNiveau();
-        
     }
-    
-   
-    
-    
-    
+
     public PanelGrille getPanelGrille(){
         return panelGrille;
     }
