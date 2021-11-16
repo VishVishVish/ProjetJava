@@ -20,10 +20,8 @@ public class PanelNiveau extends JPanel implements Data{
     
     private int score = 0;
     private int numNiveau = 1;
+    private int temps = 999;
     
-    
-    
-
     Grille grille;
    
     Personnage perso;
@@ -95,8 +93,6 @@ public class PanelNiveau extends JPanel implements Data{
         this.score = score;    
     }
     
-    
-    
     public int getNumNiveau(){
         return numNiveau;
     }
@@ -107,6 +103,18 @@ public class PanelNiveau extends JPanel implements Data{
     
     public PanelControle getPanelControle(){
         return panelControle;
+    }
+    
+     public int getTemps(){
+        return temps;
+    }
+    
+    public void setTemps(int temps){
+        this.temps = temps;    
+    }
+    
+    public void setLabelTemps(){
+    panelControle.setLabelTemps();
     }
     
     public void setPanelControle( PanelControle panelControle){
