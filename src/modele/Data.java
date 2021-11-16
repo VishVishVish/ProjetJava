@@ -25,6 +25,7 @@ public interface Data {
     public char ICE_N = '.'; // banquise normal, N pour normal
     public char ICE_S = 'o'; // banquise epais, S pour strong 
     public char EXIT = 'S';
+    public char POT_L = 'L'; //potion de legerete
     
     public ImageIcon TEST = new ImageIcon("img/test.png");
     public ImageIcon IMG_PERSO = new ImageIcon("img/perso.png");
@@ -33,6 +34,7 @@ public interface Data {
     public ImageIcon IMG_ICE_N = new ImageIcon("img/ice_n.png");
     public ImageIcon IMG_ICE_S = new ImageIcon("img/ice_s.png");
     public ImageIcon IMG_EXIT = new ImageIcon();
+    public ImageIcon IMG_POT_L = new ImageIcon();
     
     public Color COLOR_SNOW = new Color(174,255,255);
     public Color COLOR_ICE = new Color(5,100,255);
@@ -61,72 +63,72 @@ public interface Data {
    public char LEVEL_4 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//1
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//2                             
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//3  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//4  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//5  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//3  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,BLOCK},//4  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//5  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//6  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//7  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//8  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//9  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//10  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//11  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,EXIT ,ICE_N,ICE_N,BLOCK},//12  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//13  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,BLOCK},//12  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//13  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK}};//15
    
    
    public char LEVEL_3 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//1
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//2                             
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//3  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//4  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//5  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//6  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//7  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//8  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//9  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//10  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//11  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,EXIT ,ICE_N,ICE_N,BLOCK},//12  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//13  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
+                               {BLOCK,EXIT ,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//2                             
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//3  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//4  
+                               {BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//5  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//6  
+                               {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK},//7  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//8  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//9  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//10  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//11  
+                               {BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//12  
+                               {BLOCK,ICE_N,ICE_S,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_S,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//13  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK}};//15
    
    
    public char LEVEL_2 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//1
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//2                             
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//3  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//4  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//5  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//6  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//7  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//8  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//9  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//10  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//11  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,EXIT ,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//12  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//13  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,BLOCK,BLOCK,EXIT ,BLOCK,ICE_N,BLOCK},//2                             
+                               {BLOCK,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK},//3  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//4  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//5  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//6  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//7  
+                               {BLOCK,BLOCK,BLOCK,BLOCK,POT_L,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK},//8  
+                               {BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,BLOCK},//9  
+                               {BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK},//10  
+                               {BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,BLOCK,BLOCK},//11  
+                               {BLOCK,BLOCK,BLOCK,BLOCK,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_N,ICE_N,BLOCK},//12  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//13  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK}};//15
    
    
    public char LEVEL_1 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//1
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//2                             
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//3  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,BLOCK},//4  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//5  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//6  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//7  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//8  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//9  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//10  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//11  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,EXIT ,ICE_N,ICE_N,BLOCK},//12  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//13  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
+                               {BLOCK,EXIT ,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK},//2                             
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//3  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,BLOCK},//4  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK},//5  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//6  
+                               {BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//7  
+                               {BLOCK,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//8  
+                               {BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//9  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//10  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK},//11  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,BLOCK},//12  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//13  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK}};//15
         
     
@@ -152,7 +154,7 @@ public interface Data {
     
  
     /*position du perso dans la grille de chaque niveau*/
-    int POS_PERSO [][] = {{1,1},{1,1},{1,2},{1,3},{1,1},{1,1}};
+    int POS_PERSO [][] = {{1,1},{13,1},{9,9},{13,1},{1,1},{1,1}};
     
     public static Font fontBouton = new Font("Serif", Font.BOLD, 20); //correspond à la font des boutons du menu principal
 }

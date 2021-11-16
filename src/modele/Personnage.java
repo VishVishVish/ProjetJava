@@ -29,6 +29,7 @@ public class Personnage extends Case implements Data {
         this.newPosX = posX;
         this.newPosY = posY;
     }
+    int Statut_L=0;
     
     
     public char[][] newPosition(Grille grille){
@@ -42,13 +43,23 @@ public class Personnage extends Case implements Data {
         }
         
         
+        if(caseGrille == Data.POT_L)//si potion leger on remplace par une banquise
+            {grilleChar[posX][posY] = Data.ICE_N;
+            Statut_L =7;
+            
+            }
         
-        if(caseGrille == Data.ICE_N)//si banquise normal on remplace par de l'eau
-            grilleChar[posX][posY] = Data.WATER;
-        else if(caseGrille == Data.ICE_S)//si banquise epaisse on remplace par une banquise normal
-            grilleChar[posX][posY] = Data.ICE_N;
+            if (Statut_L ==0) { 
+                if(caseGrille == Data.ICE_N)//si banquise normal on remplace par de l'eau
+                    grilleChar[posX][posY] = Data.WATER;
+                else if(caseGrille == Data.ICE_S)//si banquise epaisse on remplace par une banquise normal
+                    grilleChar[posX][posY] = Data.ICE_N;
+                               }
+        else 
+            Statut_L--;
         
         
+      
         caseGrille = grilleChar[newPosX][newPosY]; //on recupère le symbole ou est placé le personnage
         
        
