@@ -11,6 +11,8 @@ import java.awt.event.KeyListener;
 import modele.Data;
 import modele.Grille;
 import modele.Personnage;
+import java.util.Timer;
+import java.util.TimerTask;
 import vue.*;
 
 /**
@@ -56,7 +58,21 @@ public class Controleur implements ActionListener, KeyListener, Data{
         switch (evt.getActionCommand()) {
 /***PANELMENU***/
             case "NOUVELLE PARTIE":
-                fenetre.setFenetre(panelNiveau);     
+                fenetre.setFenetre(panelNiveau);
+                   
+                Timer chrono = new Timer();
+                chrono.schedule(new TimerTask(){
+
+                    @Override
+                    public void run(){
+                        System.out.println("Temps :" + panelNiveau.getTemps());
+                        //panelNiveau.setTemps(panelNiveau.getTemps()+1);
+                        PanelControle x = panelNiveau.getPanelControle();
+                        x.setTemps(x.getTemps()+1);
+                        x.setLabelTemps();
+                        panelNiveau.setPanelControle(x);
+                    }
+                },1000,1000);
                 break;
             case "CONTINUER":
                 break;

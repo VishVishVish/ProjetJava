@@ -20,7 +20,7 @@ public class PanelNiveau extends JPanel implements Data{
     
     private int score = 0;
     private int numNiveau = 1;
-    private int temps = 999;
+    private int temps = 998;
     
     Grille grille;
    
