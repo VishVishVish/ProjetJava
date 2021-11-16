@@ -64,6 +64,7 @@ public class PanelNiveau extends JPanel implements Data{
         grille.setGrilleChar(perso.setPosition(grille)); 
         panelControle.setNumNiveau(numNiveau);
         panelControle.setLabelNiveau();    
+        
     }
     
     public void resetNiveau(){
@@ -74,6 +75,10 @@ public class PanelNiveau extends JPanel implements Data{
         grille.setGrilleChar(perso.setPosition(grille)); 
     }
 
+   
+    
+    
+    
     public PanelGrille getPanelGrille(){
         return panelGrille;
     }

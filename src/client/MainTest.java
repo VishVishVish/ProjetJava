@@ -20,7 +20,19 @@ public class MainTest extends JFrame implements Data{
  
  public static void  main(String[] args) {
      
-   ListeFontes list = new ListeFontes();  
+   //ListeFontes list = new ListeFontes(); 
+   
+   
+   int tab1[] = {1,2,3};
+   int tab2[];
+   
+   tab2 = tab1;
+   
+   tab2[0] = 99;
+   
+   for(int i = 0;i<3;i++)
+       System.out.println(tab1[i]);
+   
   //Créer JFrame
   //JFrame jframe = new JFrame("redimensionnement JFrame");
   //jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

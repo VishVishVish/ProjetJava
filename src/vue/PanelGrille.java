@@ -50,7 +50,6 @@ public class PanelGrille extends JPanel implements Data {
         switch(caractere){
             case Data.ICE_N :
                 //label.setBackground(Color.WHITE);
-                
                 label.setIcon(Data.IMG_ICE_N);
                 break;
             case Data.WATER :

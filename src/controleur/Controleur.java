@@ -22,6 +22,7 @@ public class Controleur implements ActionListener, KeyListener, Data{
     PanelMenu panelMenu;
     PanelNiveau panelNiveau;
     PanelGrille panelGrille;
+    PanelTuto panelTuto;
    
     Grille grille;
     
@@ -34,67 +35,79 @@ public class Controleur implements ActionListener, KeyListener, Data{
      * @param panelNiveau correspond au panel des niveaux du jeu
      * @param fenetre correspond à la fenêtre du jeu
      */
-    public Controleur(PanelMenu panelMenu, PanelNiveau panelNiveau, Fenetre fenetre){
+    public Controleur(PanelMenu panelMenu, PanelNiveau panelNiveau, PanelTuto panelTuto, Fenetre fenetre){
         this.panelMenu = panelMenu;
         this.panelNiveau = panelNiveau;
         this.panelGrille = panelNiveau.getPanelGrille();
         this.grille = panelGrille.getGrille();
         this.perso = panelNiveau.getPersonnage();
         this.fenetre = fenetre;
+        this.panelTuto = panelTuto;
         
         this.panelMenu.enregistreEcouteur(this);
         this.panelNiveau.enregistreEcouteur(this);
+        this.panelTuto.enregistreEcouteur(this);
         this.fenetre.enregistreEcouteur(this);
-        
-        
+  
     }
     
     @Override
     public void actionPerformed(ActionEvent evt) {
         switch (evt.getActionCommand()) {
-            case "START":
+/***PANELMENU***/
+            case "NOUVELLE PARTIE":
                 fenetre.setFenetre(panelNiveau);     
                 break;
-            case "CONTINUE":
+            case "CONTINUER":
                 break;
             case "SCORE":
                 break;
             case "BONUS":
                 break;
-            case "RULES":
+            case "RÈGLES":
+                fenetre.setFenetre(panelTuto);     
                 break;
-            case "EXIT":
+            case "QUITTER":
                 System.exit(0); //pour fermer l'application
             case "RESET":
                 panelNiveau.resetNiveau();
                 panelNiveau.setGrille(grille);
                 perso = panelNiveau.getPersonnage();
-
                 break;
-            case "\u25B2":
-                System.out.println("deplacement haut effectué");
+/***PANELNIVEAU***/
+            case "\u25B2": //déplacement haut    
                 perso.deplacementHaut();
                 grille.setGrilleChar(perso.newPosition(grille));
                 panelNiveau.setGrille(grille);            
                 break;
-            case "\u25BA":
-                System.out.println("deplacement droite effectué");
+            case "\u25BA": //déplacement droite 
                 perso.deplacementDroite();
                 grille.setGrilleChar(perso.newPosition(grille));
                 panelNiveau.setGrille(grille);        
                 break;
-            case "\u25BC":
-                System.out.println("deplacement bas effectué");
+            case "\u25BC": //déplacement bas
                 perso.deplacementBas();
                 grille.setGrilleChar(perso.newPosition(grille));
                 panelNiveau.setGrille(grille);        
                 //panelNiveau.revalidate(); 
                 break;
-            case "\u25C4":
-                System.out.println("deplacement gauche effectué");
+            case "\u25C4": //déplacement gauche 
                 perso.deplacementGauche();
                 grille.setGrilleChar(perso.newPosition(grille));
                 panelNiveau.setGrille(grille);        
+                break;
+/***PANELTUTO***/
+            case "<<": 
+                panelTuto.premier();
+                break;
+            case "<": 
+                panelTuto.precedent();
+                break;
+            case ">": 
+                panelTuto.suivant();
+                break;
+            case ">>": 
+                panelTuto.dernier();
                 break;
             default:
                 System.out.println("evt detecté mais non traité");
@@ -137,36 +150,14 @@ public class Controleur implements ActionListener, KeyListener, Data{
                 //panelNiveau.setScore(panelNiveau.getScore()+10);
                 break;
             }
-        
         grille.setGrilleChar(perso.newPosition(grille));
         
-        if(perso.getCaseGrille()==Data.EXIT){ // permet de passer au niveau suivant lorsque 
-                       /*                        // le personnage est sur une case exit 
-            int niveau = panelNiveau.getNumNiveau()+1; //PAS TOUCHER
-            panelNiveau.setNumNiveau(niveau);
-            
-            PanelControle pan = panelNiveau.getPanelControle();//permet de changer l'affichage du niveau (à améliorer) 
-            pan.setNumNiveau(niveau);
-            pan.setLabelNiveau();
-            panelNiveau.setPanelControle(pan);
-            
-            grille = new Grille(niveau);           
-            int posX = Data.POS_PERSO[niveau][0];
-            int posY = Data.POS_PERSO[niveau][1];
-            perso = new Personnage(posX,posY,Data.PERSO);       
-            grille.setGrilleChar(perso.setPosition(grille));            
-            panelNiveau.setGrille(grille);     
-            */
+        if(perso.getCaseGrille()==Data.EXIT){ // permet de passer au niveau suivant lorsque            
             panelNiveau.setNiveau(panelNiveau.getNumNiveau()+1);
-            //panelNiveau.setGrille(grille);
-            perso = panelNiveau.getPersonnage();
-            
-                       
+            perso = panelNiveau.getPersonnage();             
         } 
         panelNiveau.setGrille(grille);        
-        //panelNiveau.revalidate();
-        
-        //grille.affichageGrille();
+   
     }
 
     @Override

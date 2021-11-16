@@ -36,7 +36,7 @@ public class PanelControle extends JPanel implements Data{
     JButton boutonSave = new JButton("SAVE");
     JButton boutonMenu = new JButton("MENU");
         
-    Font fontLabel = new Font("Agency FB", Font.BOLD, 50);
+    Font fontLabel = new Font(fontPolice, Font.BOLD, 50);
     Font font = new Font("Serif", Font.BOLD, 40);
 
     
@@ -53,17 +53,17 @@ public class PanelControle extends JPanel implements Data{
          labelTemps.setFont(fontLabel);
          labelScore.setFont(fontLabel);
          
-         labelNiveau.setForeground(COLOR_BLUE);
-         labelTemps.setForeground(COLOR_BLUE);
-         labelScore.setForeground(COLOR_BLUE);
+         labelNiveau.setForeground(Color.WHITE);
+         labelTemps.setForeground(Color.WHITE);
+         labelScore.setForeground(Color.WHITE);
          
-        //On personalise les boutons
+        //On personalise les boutons de déplacements
         for (JButton bouton : boutons) {
             bouton.setFont(font);
             bouton.setBorder(BorderFactory.createLineBorder(COLOR_ICE,4, true));
             bouton.setBackground(Data.COLOR_SNOW);
             bouton.setForeground(COLOR_ICE);
-            bouton.setPreferredSize(new Dimension(70,70));
+            bouton.setPreferredSize(new Dimension(90,90));
             bouton.setFocusable(false);
         }
         boutonReset.setFocusable(false);
@@ -74,10 +74,12 @@ public class PanelControle extends JPanel implements Data{
         //on créé les panels qu'on va ajouter au panelControle
         JPanel panelHaut = new JPanel(new GridLayout(3,1));
         JPanel panelMilieu = new JPanel(new GridBagLayout());
-        JPanel panelBas = new JPanel(new BorderLayout());
+        JPanel panelBas = new JPanel(new GridLayout(3,1));
         
         //on ajoute des couleurs de fond au panels 
-        panelHaut.setBackground(Data.COLOR_SNOW);
+        panelHaut.setBackground(Data.COLOR_BLUE);
+        panelHaut.setPreferredSize(new Dimension(50,230));
+        //panelHaut.setBorder(BorderFactory.createLineBorder(COLOR_SNOW,7, true));
         panelMilieu.setBackground(COLOR_BACK);
         panelBas.setBackground(Color.BLUE);
         
@@ -139,7 +141,7 @@ public class PanelControle extends JPanel implements Data{
     }
     
     public void setLabelNiveau(){
-        this.labelNiveau.setText("Niveau " + numNiveau);
+        this.labelNiveau.setText("NIVEAU " + numNiveau);
     }
     
     

@@ -18,7 +18,7 @@ import modele.Data;
 public class Fenetre extends JFrame implements Data{
     
     public Fenetre(){
-        super("Fenêtre de jeu");
+        super("FINN-ECE");
         
         
         this.setIconImage(Data.IMG_PERSO.getImage());

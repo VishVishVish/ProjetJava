@@ -39,6 +39,8 @@ public interface Data {
     public Color COLOR_BLUE = new Color(0,68,181);
     public Color COLOR_BACK = new Color(58,220,254);
     
+    String fontPolice = "Agency FB";
+    
                      
    public char LEVEL_5 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//1
