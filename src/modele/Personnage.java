@@ -51,7 +51,7 @@ public class Personnage extends Case implements Data {
         
             if (Statut_L ==0) { 
                 if(caseGrille == Data.ICE_N)//si banquise normal on remplace par de l'eau
-                    grilleChar[posX][posY] = Data.WATER;
+                    grilleChar[posX][posY] = Data.WATER;      
                 else if(caseGrille == Data.ICE_S)//si banquise epaisse on remplace par une banquise normal
                     grilleChar[posX][posY] = Data.ICE_N;
                                }
