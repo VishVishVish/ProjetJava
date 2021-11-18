@@ -15,13 +15,14 @@ import modele.Grille;
 import modele.Personnage;
 import java.util.Timer;
 import java.util.TimerTask;
+import modele.Monstre;
 import vue.*;
 
 /**
  *
  * @author vishn
  */
-public class Controleur implements ActionListener, KeyListener, Data{
+public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     
     PanelMenu panelMenu;
     PanelNiveau panelNiveau;
@@ -33,6 +34,12 @@ public class Controleur implements ActionListener, KeyListener, Data{
    
     Personnage perso;
     Fenetre fenetre;
+    
+    
+    Monstre monstre = new Monstre(1,1,'M');
+    Thread t = new Thread(monstre);
+    
+    
     /**
      * Constructeur de la classe controleur permet de coordonnées les actions/réactions du jeu 
      * @param panelMenu correspond au panel du menu principal du jeu 
@@ -54,6 +61,14 @@ public class Controleur implements ActionListener, KeyListener, Data{
         this.fenetre.enregistreEcouteur(this);
   
     }
+   
+    @Override
+    public void run(){
+        Thread p = new Thread(this);
+        p.start();
+        System.out.println("ookk");
+         
+    }
     
     @Override
     public void actionPerformed(ActionEvent evt) {
@@ -61,18 +76,32 @@ public class Controleur implements ActionListener, KeyListener, Data{
 /***PANELMENU***/
             case "NOUVELLE PARTIE":
                 fenetre.setFenetre(panelNiveau);
-                   
+                t.start();
                 Timer chrono = new Timer();
                 chrono.schedule(new TimerTask(){
-
+                
                     @Override
                     public void run(){
-                        System.out.println("Temps :" + panelNiveau.getTemps());
+                        //System.out.println("Temps :" + panelNiveau.getTemps());
                         //panelNiveau.setTemps(panelNiveau.getTemps()+1);
-                        PanelControle x = panelNiveau.getPanelControle();
-                        x.setTemps(x.getTemps()+1);
-                        x.setLabelTemps();
-                        panelNiveau.setPanelControle(x);
+                        PanelControle pan = panelNiveau.getPanelControle();
+                        pan.setTemps(pan.getTemps()+1);
+                        pan.setLabelTemps();
+                        panelNiveau.setPanelControle(pan);
+                        
+                        //partie monstre
+                
+                        if( monstre.getCaseGrille()== PERSO) {
+                            panelNiveau.resetNiveau();
+                            panelNiveau.setGrille(grille);
+                            perso = panelNiveau.getPersonnage();
+                            
+                            monstre.setCaseGrille(ICE_N);
+                        }
+                        grille.setGrilleChar(monstre.newPosition(grille));   
+                        
+                        panelNiveau.setGrille(grille);
+                        
                     }
                 },1000,1000);
                 break;
@@ -146,29 +175,33 @@ public class Controleur implements ActionListener, KeyListener, Data{
             case KeyEvent.VK_Z:
             case KeyEvent.VK_8:    
                 perso.deplacementHaut();
-                /**/
-                //panelNiveau.setScore(panelNiveau.getScore()+10);  
-                break;
+                grille.setGrilleChar(perso.newPosition(grille));
+               
             case KeyEvent.VK_DOWN:  
             case KeyEvent.VK_S:
             case KeyEvent.VK_2:
-                perso.deplacementBas();               
-                //panelNiveau.setScore(panelNiveau.getScore()+10);
+                perso.deplacementBas(); 
+                grille.setGrilleChar(perso.newPosition(grille));
+               
                 break;
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_D:
             case KeyEvent.VK_6:
                 perso.deplacementDroite();
-               // panelNiveau.setScore(panelNiveau.getScore()+10);
+                grille.setGrilleChar(perso.newPosition(grille));
+               
                 break;
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_Q:
             case KeyEvent.VK_4:    
                 perso.deplacementGauche();
-                //panelNiveau.setScore(panelNiveau.getScore()+10);
+               grille.setGrilleChar(perso.newPosition(grille));
                 break;
-            }
-        grille.setGrilleChar(perso.newPosition(grille));
+            default : 
+                break;
+        }
+        
+       
         
         if(perso.getCaseGrille()==Data.EXIT){ // permet de passer au niveau suivant lorsque            
             panelNiveau.setNiveau(panelNiveau.getNumNiveau()+1);

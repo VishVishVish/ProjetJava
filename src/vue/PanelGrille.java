@@ -71,6 +71,10 @@ public class PanelGrille extends JPanel implements Data {
             case Data.EXIT :
                 label.setBackground(Color.GREEN);
                 break;    
+            case Data.MONSTRE :
+                label.setIcon(Data.IMG_MONSTRE);
+                //label.setBackground(Color.PINK);
+                break;    
             default:
                 label.setBackground(Color.YELLOW);
                 break;

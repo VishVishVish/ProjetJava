@@ -5,6 +5,7 @@
  */
 package client;
 import modele.*;
+import java.util.Scanner;
 
    import java.awt.Dimension;
 import java.util.Arrays;
@@ -22,16 +23,19 @@ public class MainTest extends JFrame implements Data{
      
    //ListeFontes list = new ListeFontes(); 
    
-   
-   int tab1[] = {1,2,3};
-   int tab2[];
-   
-   tab2 = tab1;
-   
-   tab2[0] = 99;
-   
-   for(int i = 0;i<3;i++)
-       System.out.println(tab1[i]);
+  Grille grille = new Grille(0);
+  grille.affichageGrille();
+  Monstre monstre = new Monstre(1,1,'M');
+  Thread t = new Thread(monstre);
+  t.start();
+  monstre.setPosition(grille);
+  grille.affichageGrille();
+  for(int i = 0; i<10; i++) {
+      Scanner scanner = new Scanner(System.in);
+      int nombre = scanner.nextInt();
+      grille.setCase(monstre);
+      grille.affichageGrille();
+  }
    
   //Créer JFrame
   //JFrame jframe = new JFrame("redimensionnement JFrame");

@@ -88,9 +88,6 @@ public class PanelControle extends JPanel implements Data{
         panelHaut.add(labelTemps);
         panelHaut.add(labelScore);
         
-        
-        
-  
         //panelMilieu//
         GridBagConstraints gbc = new GridBagConstraints();//on instancie la contrainte
         gbc.insets = new Insets( 0, 10, 0, 10 );

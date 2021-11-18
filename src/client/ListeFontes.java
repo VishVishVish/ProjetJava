@@ -36,6 +36,10 @@ public class ListeFontes extends JFrame {
     setLocation(100, 100);
     setVisible(true);
     }
+    
+    public static void main(String[] args) {
+        new ListeFontes();
+    }
 }
 
 

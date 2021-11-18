@@ -11,11 +11,11 @@ package modele;
  */
 public abstract class Case {
     /**
-     * //correspond à la position X de la case de la grille
+     * correspond à la position X de la case de la grille
      */
     protected int posX; 
     /**
-     * //correspond à la position Y de la case de la grille
+     * correspond à la position Y de la case de la grille
      */
     protected int posY; 
     /**

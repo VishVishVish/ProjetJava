@@ -33,7 +33,7 @@ public class PanelNiveau extends JPanel implements Data{
     public PanelNiveau(){
         grille = new Grille();
         panelControle = new PanelControle();
-        setNiveau(numNiveau);
+        setNiveau(0);
         panelGrille = new PanelGrille(grille);
  
         setLayout(new BorderLayout());
@@ -50,7 +50,7 @@ public class PanelNiveau extends JPanel implements Data{
         panelGrille.removeAll();
         panelGrille.setGrille(grille);
         panelGrille.revalidate();
-        //panelMilieu.repaint();
+        //panelGrille.repaint();
     }
     
     public void setNiveau(int numNiveau){
@@ -61,7 +61,8 @@ public class PanelNiveau extends JPanel implements Data{
         perso = new Personnage(posX,posY,Data.PERSO);
         grille.setGrilleChar(perso.setPosition(grille)); 
         panelControle.setNumNiveau(numNiveau);
-        panelControle.setLabelNiveau();    
+        panelControle.setLabelNiveau();
+        this.setVisible(true);
         
     }
     
