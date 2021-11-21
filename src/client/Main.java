@@ -1,6 +1,8 @@
 package client;
 import vue.*;
 import controleur.Controleur;
+import modele.Grille;
+import modele.Monstre;
 
 /**
  *Permet de lancer le programme en utilisant les différentes classes du projet
@@ -15,17 +17,20 @@ public class Main {
         PanelMenu panelMenu = new PanelMenu(); 
         PanelNiveau panelNiveau = new PanelNiveau(); 
         PanelTuto panelTuto = new PanelTuto();
+        PanelScore panelScore = new PanelScore();
         //PanelGrille panelGrille = new PanelGrille(); 
         Fenetre fenetre = new Fenetre();
+  
+ 
         
-        //fenetre.setContentPane(panelTuto);
-        //panelTuto.affiche();
         fenetre.setContentPane(panelMenu);
         //fenetre.pack();
         //System.out.println(fenetre.getHeight());
         Controleur controleur = new Controleur(panelMenu, panelNiveau, panelTuto, fenetre);
         
         
+        
+       
         
     }
     
