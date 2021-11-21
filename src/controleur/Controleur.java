@@ -33,7 +33,8 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     PanelNiveau panelNiveau;
     PanelGrille panelGrille;
     PanelTuto panelTuto;
-   
+    PanelScore panelScore;
+    
     //package modele
     Grille grille;
     Personnage perso;
@@ -58,7 +59,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
      * @param panelNiveau correspond au panel des niveaux du jeu
      * @param fenetre correspond à la fenêtre du jeu
      */
-    public Controleur(PanelMenu panelMenu, PanelNiveau panelNiveau, PanelTuto panelTuto, Fenetre fenetre){
+    public Controleur(PanelMenu panelMenu, PanelNiveau panelNiveau, PanelScore panelScore,  PanelTuto panelTuto, Fenetre fenetre){
         this.panelMenu = panelMenu;
         this.panelNiveau = panelNiveau;
         this.panelGrille = panelNiveau.getPanelGrille();
@@ -66,10 +67,12 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         this.perso = panelNiveau.getPersonnage();
         this.fenetre = fenetre;
         this.panelTuto = panelTuto;
+        this.panelScore = panelScore;
         
         this.panelMenu.enregistreEcouteur(this);
         this.panelNiveau.enregistreEcouteur(this);
         this.panelTuto.enregistreEcouteur(this);
+        this.panelScore.enregistreEcouteur(this);
         this.fenetre.enregistreEcouteur(this);
         
         
@@ -105,11 +108,15 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             case "CONTINUER":
                 break;
             case "SCORE":
+                fenetre.setFenetre(panelScore);
                 break;
             case "BONUS":
                 break;
             case "RÈGLES":
                 fenetre.setFenetre(panelTuto);     
+                break;
+            case "MENU":
+                fenetre.setFenetre(panelMenu);     
                 break;
             case "QUITTER":
                 System.exit(0); //pour fermer l'application

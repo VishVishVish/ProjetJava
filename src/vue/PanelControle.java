@@ -67,6 +67,7 @@ public class PanelControle extends JPanel implements Data{
             bouton.setFocusable(false);
         }
         boutonReset.setFocusable(false);
+        boutonMenu.setFocusable(false);
          
         setLayout(new BorderLayout());
         //this.setBackground(Color.cyan);

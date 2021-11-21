@@ -48,7 +48,7 @@ public class Chrono implements Runnable {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Chrono.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(temps);
+            //System.out.println(temps);
             temps++;
             
         }   
