@@ -84,6 +84,12 @@ public class Grille implements Data{
         }
     }
     
+    public Monstre setMonstre(Monstre monstre){
+        monstre.newPosition(this.grilleChar);
+        
+        return monstre;
+    }
+    
     /**
      * permet d'afficher la grille du niveau dans la console
      */

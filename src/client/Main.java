@@ -17,23 +17,11 @@ public class Main {
         PanelMenu panelMenu = new PanelMenu(); 
         PanelNiveau panelNiveau = new PanelNiveau(); 
         PanelTuto panelTuto = new PanelTuto();
+        PanelScore panelScore = new PanelScore();
         //PanelGrille panelGrille = new PanelGrille(); 
         Fenetre fenetre = new Fenetre();
-        
-        
-        //Grille grille = new Grille(0);
-        //grille.affichageGrille();
-        /*
-        Monstre monstre = new Monstre(1,1,'M');
-        Thread t = new Thread(monstre);
-        t.start();
-        monstre.setPosition(grille);
-        panelNiveau.setGrille(grille);
-*/
-        //fenetre.setContentPane(panelTuto);
-        //panelTuto.affiche();
-        
-        panelNiveau.setNiveau(0);
+  
+ 
         
         fenetre.setContentPane(panelMenu);
         //fenetre.pack();

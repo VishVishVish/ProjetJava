@@ -43,7 +43,7 @@ public class PanelControle extends JPanel implements Data{
     public PanelControle(){
         numNiveau = 1;
         score = 0;
-        temps = 999;
+        temps = 0;
         
          labelNiveau = new JLabel("NIVEAU " + numNiveau, JLabel.CENTER);
          labelTemps = new JLabel("TEMPS : " + temps, JLabel.CENTER);
