@@ -28,6 +28,15 @@ import javax.swing.JFrame;
 public class MainTest extends JFrame implements Data{
  
  public static void  main(String[] args) throws Exception{
+     
+     
+     Scores scores = new Scores();
+     String [] score = scores.max();
+     System.out.println(score[0]+" " + score[1]+" "+score[2]);
+     
+     
+     
+     /*
     ArrayList<String> array = new ArrayList<>(); //contient pseudo, score, temp des joueurs ayant fini une partie
     
     File file = new File("save.txt");
@@ -69,7 +78,7 @@ public class MainTest extends JFrame implements Data{
     System.out.println(pseudo);
     System.out.println(Integer.parseInt(score) );
          
-         
+         */
          
          
          //ListeFontes list = new ListeFontes();

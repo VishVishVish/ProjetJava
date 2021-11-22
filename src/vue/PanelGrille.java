@@ -57,7 +57,7 @@ public class PanelGrille extends JPanel implements Data {
                 //label.setBackground(Color.BLUE);
                 break;    
             case Data.BLOCK :
-                label.setBackground(Color.BLACK);
+                //label.setBackground(Color.BLACK);
                 label.setIcon(Data.IMG_BLOCK);
                 break;    
             case Data.PERSO :
@@ -80,7 +80,7 @@ public class PanelGrille extends JPanel implements Data {
                 break;
         }
         label.setOpaque(true);
-        label.setSize(new Dimension(100,100));
+        //label.setSize(new Dimension(100,100));
         return label;
     }
     

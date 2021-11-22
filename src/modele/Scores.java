@@ -9,19 +9,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
  *
  * @author vishn
  */
-public class Score {
+public class Scores {
     
     ArrayList<String[]> listeScore = new ArrayList<>();
+    ArrayList<String[]> classement = new ArrayList<>();
     File file = new File("score.txt");
     
     
-    public Score()  {
+    public Scores()  {
         
         try {
 
@@ -48,11 +50,35 @@ public class Score {
             }
             scanner.close();    
         }
-        catch(IOException e){e.printStackTrace();}    
+        catch(IOException e){e.printStackTrace();}
+        
+        for(int i = 0; i<5; i++) {
+            String [] scoreMax = this.max();
+            classement.add(scoreMax);
+            listeScore.remove(scoreMax);
+        }
     }
     
-    public String[] get(int i){
-        return listeScore.get(i);
+    public String[] getClassement(int i){
+        return classement.get(i);
+    }
+    public ArrayList<String[]> getClassement(){
+        return classement;
+    }
+    
+    public String[] max(){
+                 
+        String [] scoreMax = listeScore.get(0);
+     
+        for(int i = 0; i<listeScore.size(); i++){   
+            if(Integer.parseInt(scoreMax[1])<Integer.parseInt(listeScore.get(i)[1])){
+               scoreMax = listeScore.get(i);
+       
+            }
+        }
+        
+        return scoreMax;
+            
     }
     
    
