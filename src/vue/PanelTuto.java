@@ -26,6 +26,8 @@ public class PanelTuto extends JPanel implements Data{
     JButton boutonSuivant = new JButton(">");
     JButton boutonDernier = new JButton(">>");
     
+    JButton boutonMenu = new JButton("MENU");
+    
     JLabel labels [] = {label1, label2, label3, label4};
     
     JButton boutons [] = {boutonPremier, boutonPrecedent, boutonSuivant, boutonDernier};
@@ -49,6 +51,7 @@ public class PanelTuto extends JPanel implements Data{
         panelBas.add(boutonPrecedent);
         panelBas.add(boutonSuivant);
         panelBas.add(boutonDernier);
+        panelBas.add(boutonMenu);
         /*
         for(JLabel label : labels){
             panelMilieu.add(label);
@@ -83,6 +86,7 @@ public class PanelTuto extends JPanel implements Data{
         boutonPrecedent.addActionListener(controleur);
         boutonSuivant.addActionListener(controleur);
         boutonDernier.addActionListener(controleur);
+        boutonMenu.addActionListener(controleur);
    
     }
     

@@ -20,7 +20,7 @@ public class PanelNiveau extends JPanel implements Data{
     
     private int score = 0;
     private int numNiveau = 1;
-    private int temps = 998;
+    private int temps = 0;
     
     Grille grille;
    
@@ -33,7 +33,7 @@ public class PanelNiveau extends JPanel implements Data{
     public PanelNiveau(){
         grille = new Grille();
         panelControle = new PanelControle();
-        setNiveau(4);
+        //setNiveau(5);
         panelGrille = new PanelGrille(grille);
  
         setLayout(new BorderLayout());
@@ -47,11 +47,13 @@ public class PanelNiveau extends JPanel implements Data{
     }
     
     public void setGrille(Grille grille){
-        
+        //panelGrille.invalidate();
         panelGrille.removeAll();
         panelGrille.setGrille(grille);
+        //panelGrille.setVisible(true);
+        //panelGrille.repaint();
         panelGrille.revalidate();
-        //panelGrille.repaint();    
+        
     }
  
     public void setNiveau(int numNiveau){

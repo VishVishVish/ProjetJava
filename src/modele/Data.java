@@ -31,6 +31,8 @@ public interface Data {
     /*SPRITE DU JEU, IMAGES CONTENUE DANS LE DOSSIER IMG DU PROJET*/
     public ImageIcon TEST = new ImageIcon("img/test.png");
     public ImageIcon IMG_PERSO = new ImageIcon("img/perso.png");
+
+    
     public ImageIcon IMG_MONSTRE = new ImageIcon("img/monstre_test.png");
     public ImageIcon IMG_BLOCK = new ImageIcon("img/block.png");
     public ImageIcon IMG_WATER = new ImageIcon("img/water.png");

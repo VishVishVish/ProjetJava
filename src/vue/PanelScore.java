@@ -29,7 +29,7 @@ public class PanelScore extends JPanel implements Data{
     JPanel panelMilieu;
     JPanel panelBas;
     
-    Scores listeScore;
+    Scores listeScores;
     
     JLabel labelTitre = new JLabel("SCORE CLASSEMENT", JLabel.CENTER);
     
@@ -59,8 +59,8 @@ public class PanelScore extends JPanel implements Data{
         
         //panelMilieu
         panelMilieu.setBackground(COLOR_BACK);
-        listeScore = new Scores();               
-        int nbrLigne = listeScore.getClassement().size();
+        listeScores = new Scores();               
+        int nbrLigne = listeScores.getClassement().size();
         GridLayout gridLayout = new GridLayout(nbrLigne+1,4);
         panelMilieu.setLayout(gridLayout);
         
@@ -89,7 +89,7 @@ public class PanelScore extends JPanel implements Data{
             panelMilieu.add(labelNum);
             
             for(int j = 0; j<3; j++){
-                JLabel label = new JLabel(listeScore.getClassement(i)[j], JLabel.CENTER);
+                JLabel label = new JLabel(listeScores.getClassement(i)[j], JLabel.CENTER);
                 label.setFont(fontLabel); 
                 label.setForeground(Data.COLOR_ICE);
                 if(i%2==0)
@@ -125,6 +125,14 @@ public class PanelScore extends JPanel implements Data{
      */
     public void enregistreEcouteur(Controleur controleur) {
         boutonMenu.addActionListener(controleur);
+    }
+    
+    public void setListeScores(Scores listeScores){
+        this.listeScores = listeScores;
+    }
+    
+    public Scores getListeScores(){
+        return listeScores;
     }
     
 }

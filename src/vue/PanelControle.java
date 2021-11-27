@@ -33,8 +33,8 @@ public class PanelControle extends JPanel implements Data{
     JButton [] boutons = {boutonHaut, boutonDroite, boutonBas, boutonGauche}; // tableau regroupant l'ensemble des boutons de déplacemant
     
     JButton boutonReset = new JButton("RESET");
-    JButton boutonSave = new JButton("SAVE");
-    JButton boutonMenu = new JButton("MENU");
+    JButton boutonSauvQuit = new JButton("SAUVEGARDER ET QUITTER");
+    
         
     Font fontLabel = new Font(fontPolice, Font.BOLD, 50);
     Font font = new Font("Serif", Font.BOLD, 40);
@@ -67,7 +67,7 @@ public class PanelControle extends JPanel implements Data{
             bouton.setFocusable(false);
         }
         boutonReset.setFocusable(false);
-        boutonMenu.setFocusable(false);
+        boutonSauvQuit.setFocusable(false);
          
         setLayout(new BorderLayout());
         //this.setBackground(Color.cyan);
@@ -110,8 +110,8 @@ public class PanelControle extends JPanel implements Data{
         
         //panelBas//
         panelBas.add(boutonReset, BorderLayout.LINE_START);
-        panelBas.add(boutonSave, BorderLayout.CENTER);
-        panelBas.add(boutonMenu, BorderLayout.LINE_END);
+        panelBas.add(boutonSauvQuit, BorderLayout.CENTER);
+        
         
         //On ajoute le panel dans le panelControle
         this.add(panelHaut, BorderLayout.NORTH);
@@ -130,8 +130,8 @@ public class PanelControle extends JPanel implements Data{
         boutonGauche.addActionListener(controleur);
         boutonBas.addActionListener(controleur);
         boutonReset.addActionListener(controleur);
-        boutonMenu.addActionListener(controleur);
-        boutonSave.addActionListener(controleur);
+        boutonSauvQuit.addActionListener(controleur);
+        
     }
     
     public void setNumNiveau(int numNiveau){

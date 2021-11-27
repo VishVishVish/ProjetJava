@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,9 +31,24 @@ public class MainTest extends JFrame implements Data{
  public static void  main(String[] args) throws Exception{
      
      
-     Scores scores = new Scores();
-     String [] score = scores.max();
-     System.out.println(score[0]+" " + score[1]+" "+score[2]);
+     Save save = new Save();
+     
+     save.lire();
+     
+     System.out.println(save.getNumNiveau() + " " + save.getScore() + " " + save.getTemps());
+     
+     save.ecrire(2, 12, 789);
+     
+     save.lire();
+     
+     System.out.println(save.getNumNiveau() + " " + save.getScore() + " " + save.getTemps());
+     
+     //Scores scores = new Scores();
+     //scores.addScore("ALED", 456, 12);
+     //String [] score = scores.max();
+     //System.out.println(score[0]+" " + score[1]+" "+score[2]);
+     
+     
      
      
      

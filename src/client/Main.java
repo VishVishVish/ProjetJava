@@ -18,13 +18,14 @@ public class Main {
         PanelNiveau panelNiveau = new PanelNiveau(); 
         PanelTuto panelTuto = new PanelTuto();
         PanelScore panelScore = new PanelScore();
+        PanelVictoire panelVictoire = new PanelVictoire();
         //PanelGrille panelGrille = new PanelGrille(); 
         Fenetre fenetre = new Fenetre();
 
         fenetre.setContentPane(panelMenu);
         //fenetre.pack();
         //System.out.println(fenetre.getHeight());
-        Controleur controleur = new Controleur(panelMenu, panelNiveau, panelScore, panelTuto, fenetre);
+        Controleur controleur = new Controleur(panelMenu, panelNiveau, panelScore, panelTuto, panelVictoire, fenetre);
         
         
         
