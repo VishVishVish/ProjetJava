@@ -24,7 +24,12 @@ public class Personnage extends Case implements Data {
      */
     private char caseGrille = '.';
     
+    /**
+     * permet de savoir si le personnage s'est déplacé, utile pour le rajout de points dans le score
+     */
     public boolean boolDeplacement = false;
+    
+    int potionLeger = 0;
    
     /**
      * constructeur de la classe Personnage
@@ -53,12 +58,24 @@ public class Personnage extends Case implements Data {
             return grilleChar;
         }
         
-        if(caseGrille == Data.ICE_N)//si banquise normal on remplace par de l'eau
+        if (potionLeger<=0) {
+            if(caseGrille == Data.ICE_N)//si banquise normal on remplace par de l'eau
             grilleChar[posX][posY] = Data.WATER;
         else if(caseGrille == Data.ICE_S)//si banquise epaisse on remplace par une banquise normal
             grilleChar[posX][posY] = Data.ICE_N;
-        boolDeplacement = true;
+        }
+        else {
+            potionLeger--;
+            grilleChar[posX][posY] = caseGrille;
+        }
         caseGrille = grilleChar[newPosX][newPosY]; //on recupère le symbole ou est placé le personnage
+        if(caseGrille == Data.POT_L){
+            potionLeger = 5;
+           
+        }
+            
+            
+        boolDeplacement = true;
         
         //on place la nouvelle position du personnage dans le tableau 
         grilleChar[newPosX][newPosY] = caractere;

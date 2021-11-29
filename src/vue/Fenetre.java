@@ -19,18 +19,15 @@ public class Fenetre extends JFrame implements Data{
     
     public Fenetre(){
         super("FINN-ECE");
-        
-        
+
         this.setIconImage(new ImageIcon(getClass().getResource("/img/perso.png")).getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//stop l'application lors de la fermeture de la fenêtre
         
-        this.setSize(new Dimension(1462,947));
+        this.setSize(new Dimension(1488,947));
         this.setLocation(200, 50); //place la fenêtre lors de son affichage
         //this.setContentPane(new PanelNiveau());
         //pack();
-        setVisible(true);
-       
-        
+        setVisible(true);  
     }
     
      public void enregistreEcouteur(Controleur controleur) {
@@ -42,9 +39,7 @@ public class Fenetre extends JFrame implements Data{
         this.setContentPane(container);
         this.setVisible(true);
         //this.repaint();
-        
-        
-        
+   
     }
     
 }

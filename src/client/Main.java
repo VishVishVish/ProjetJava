@@ -24,7 +24,7 @@ public class Main {
 
         fenetre.setContentPane(panelMenu);
         //fenetre.pack();
-        //System.out.println(fenetre.getHeight());
+        //System.out.println(fenetre.getWidth() + " "+ fenetre.getHeight());
         Controleur controleur = new Controleur(panelMenu, panelNiveau, panelScore, panelTuto, panelVictoire, fenetre);
         
         

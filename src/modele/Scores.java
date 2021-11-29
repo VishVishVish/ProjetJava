@@ -24,16 +24,17 @@ public class Scores {
     
     ArrayList<String[]> listeScore = new ArrayList<>();
     ArrayList<String[]> classement = new ArrayList<>();
-    
+    File file = new File("score.txt");
 
-    //File file = new File(in);
-    
-    
     public Scores()  {
         
         //InputStream in = this.getClass().getResourceAsStream("/score.txt");
-        File file = new File("score.txt");
         
+        
+        this.lire();
+    }
+    
+    public void lire() {
         Scanner scanner;
         try {
             scanner = new Scanner(file);
@@ -60,9 +61,7 @@ public class Scores {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Scores.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+ 
         for( int i = 0; i<5; i++) {
             String [] scoreMax = this.max();
             classement.add(scoreMax);
@@ -74,7 +73,9 @@ public class Scores {
         
         if(nom.length() != 4){
             if(nom.length()>4) {
-                nom = String.valueOf(nom.charAt(0) + nom.charAt(1) + nom.charAt(2) + nom.charAt(3) ); 
+                System.out.println("string = " + nom);
+                nom = String.valueOf(nom.charAt(0)) + String.valueOf(nom.charAt(1)) + String.valueOf(nom.charAt(2)) + String.valueOf(nom.charAt(3)); 
+                System.out.println("string = " + nom);
             }
             else {
                 nom = "----";

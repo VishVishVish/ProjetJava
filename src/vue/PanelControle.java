@@ -38,6 +38,7 @@ public class PanelControle extends JPanel implements Data{
         
     Font fontLabel = new Font(fontPolice, Font.BOLD, 50);
     Font font = new Font("Serif", Font.BOLD, 40);
+    Font fontBouton = new Font(fontPolice, Font.BOLD, 25);
 
     
     public PanelControle(){
@@ -66,16 +67,30 @@ public class PanelControle extends JPanel implements Data{
             bouton.setPreferredSize(new Dimension(90,90));
             bouton.setFocusable(false);
         }
+        
+        
+        
+        
+        boutonReset.setFont(fontBouton);
+        boutonReset.setBorder(BorderFactory.createLineBorder(COLOR_ICE,4, true));
+        boutonReset.setBackground(Data.COLOR_SNOW);
+        boutonReset.setForeground(COLOR_ICE);
+        boutonReset.setPreferredSize(new Dimension(90,90));
         boutonReset.setFocusable(false);
+        boutonSauvQuit.setFont(fontBouton);
+        boutonSauvQuit.setBorder(BorderFactory.createLineBorder(COLOR_ICE,4, true));
+        boutonSauvQuit.setBackground(Data.COLOR_SNOW);
+        boutonSauvQuit.setForeground(COLOR_ICE);
+        boutonSauvQuit.setPreferredSize(new Dimension(90,90));
         boutonSauvQuit.setFocusable(false);
-         
+        
         setLayout(new BorderLayout());
         //this.setBackground(Color.cyan);
         
         //on créé les panels qu'on va ajouter au panelControle
         JPanel panelHaut = new JPanel(new GridLayout(3,1));
         JPanel panelMilieu = new JPanel(new GridBagLayout());
-        JPanel panelBas = new JPanel(new GridLayout(3,1));
+        JPanel panelBas = new JPanel(new GridLayout(2,1));
         
         //on ajoute des couleurs de fond au panels 
         panelHaut.setBackground(Data.COLOR_BLUE);
@@ -109,8 +124,10 @@ public class PanelControle extends JPanel implements Data{
         panelMilieu.add(boutonBas,gbc);
         
         //panelBas//
-        panelBas.add(boutonReset, BorderLayout.LINE_START);
-        panelBas.add(boutonSauvQuit, BorderLayout.CENTER);
+        
+        
+        panelBas.add(boutonReset);
+        panelBas.add(boutonSauvQuit);
         
         
         //On ajoute le panel dans le panelControle

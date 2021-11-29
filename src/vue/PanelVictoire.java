@@ -7,15 +7,21 @@ package vue;
 
 import controleur.Controleur;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import modele.Data;
 import static modele.Data.COLOR_BACK;
+import static modele.Data.COLOR_ICE;
 
 /**
  *
@@ -25,17 +31,22 @@ public class PanelVictoire extends JPanel {
     
     String nom = "----";
     
-    JLabel labelTitre = new JLabel("Félicitation");
-    JLabel labelSaisirNom = new JLabel("Saisir votre nom");
+    JLabel labelTitre = new JLabel("Félicitations", JLabel.CENTER);
+    JLabel labelSaisirNom = new JLabel("SAISIR VOTRE NOM:");
     JTextField textField = new JTextField("");
-    JLabel labelStrScore = new JLabel("SCORE:");
+    JLabel labelStrScore = new JLabel("SCORE:", JLabel.CENTER);
     JLabel labelStrTemps = new JLabel("TEMPS:");
     JLabel labelScore = new JLabel("0000");
     JLabel labelTemps = new JLabel("0000");
     
+    JLabel labels [] = {labelSaisirNom, labelStrScore, labelScore, labelStrTemps ,labelTemps}; 
+    
     
     JButton boutonValider = new JButton("VALIDER ET QUITTER");
     
+    Font fontTitre = new Font(Data.fontPolice, Font.BOLD, 100);
+    Font fontLabel = new Font(Data.fontPolice, Font.BOLD, 50);
+    Font fontBouton = new Font(Data.fontPolice, Font.BOLD, 30);
     
     public PanelVictoire() {
         JPanel panelHaut = new JPanel();
@@ -44,14 +55,33 @@ public class PanelVictoire extends JPanel {
         //panelHaut
         panelHaut.setLayout(new BorderLayout());
         panelHaut.add(labelTitre);
+        panelHaut.setBackground(Data.COLOR_BLUE);
+        labelTitre.setFont(fontTitre);
+        labelTitre.setForeground(Color.WHITE);
         
-        
-        
-       
-        
-        
+
         //panelMileu
+        panelMilieu.setBackground(Data.COLOR_BACK);
+        //textfield qui permet de saisir le nom
+        textField.setPreferredSize(new Dimension(200,50));
+        textField.setBorder(BorderFactory.createLineBorder(COLOR_ICE,4, true));
+        textField.setForeground(COLOR_ICE);
+        textField.setFont(fontBouton);
+        
+        //customization des labels 
+        for(JLabel label : labels){
+            label.setFont(fontLabel);
+            label.setForeground(Data.COLOR_ICE);
+        }
+        
+        //customization du bouton valider et quitter
+        
         boutonValider.setFocusable(false);
+        boutonValider.setBorder(BorderFactory.createLineBorder(COLOR_ICE,4, true));
+        boutonValider.setBackground(Data.COLOR_SNOW);
+        boutonValider.setForeground(COLOR_ICE);
+        boutonValider.setFont(fontBouton);
+        boutonValider.setPreferredSize(new Dimension(200,50));
         
         //panelMilieu.setBackground(COLOR_BACK);
         

@@ -8,14 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Timer;
-import java.util.TimerTask;
 import modele.Data;
 import modele.Grille;
 import modele.Personnage;
 import modele.Chrono;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modele.Monstre;
@@ -43,6 +39,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     Personnage perso;
     Chrono chrono;
     Save save;
+    Scores scores;
 
     Monstre monstre = new Monstre(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1],'M');
     //Thread threadMonstre = new Thread(monstre);
@@ -82,6 +79,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         this.fenetre.enregistreEcouteur(this);
  
         save = new Save();
+        scores = new Scores();
         chrono = new Chrono();
         chrono.start();
         
@@ -94,7 +92,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         switch (evt.getActionCommand()) {
 /***PANELMENU***/
             case "NOUVELLE PARTIE":
-                panelNiveau.setNiveau(1);
+                panelNiveau.setNiveau(5);
                 perso = panelNiveau.getPersonnage();
                 fenetre.setFenetre(panelNiveau);
                 boolRefresh = true;
@@ -119,8 +117,9 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 
                 break;
             case "SCORE":
-                
-                panelScore.setListeScores(new Scores());
+                scores.lire();
+                panelScore.setListeScores(scores);
+                //panelScore.setListeScores(new Scores());
                 fenetre.setFenetre(panelScore);
                 break;
             case "BONUS":
@@ -187,9 +186,10 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
 /***PANELVICTOIRE***/
             case "VALIDER ET QUITTER": 
                 panelVictoire.setNom();
-                Scores sc = new Scores();
-                sc.addScore(panelVictoire.getNom(), panelNiveau.getScore(), panelNiveau.getTemps());
-                panelScore.setListeScores(sc);
+                //Scores sc = new Scores();
+                
+                scores.addScore(panelVictoire.getNom(), panelNiveau.getScore(), panelNiveau.getTemps());
+                panelScore.setListeScores(scores);
                 fenetre.requestFocus();
                 fenetre.setFenetre(panelMenu);
                 break;
@@ -304,7 +304,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
 
     @Override
     public void run() {
-        
+          
         while(boolRefresh){
             if(monstre.getCaseGrille() == Data.PERSO || monstre2.getCaseGrille() == Data.PERSO || perso.getCaseGrille() == Data.MNSTR){
                 panelNiveau.resetNiveau();
