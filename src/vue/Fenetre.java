@@ -21,7 +21,7 @@ public class Fenetre extends JFrame implements Data{
         super("FINN-ECE");
         
         
-        this.setIconImage(Data.IMG_PERSO.getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/img/perso.png")).getImage());
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//stop l'application lors de la fermeture de la fenêtre
         
         this.setSize(new Dimension(1462,947));

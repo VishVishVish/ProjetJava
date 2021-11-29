@@ -22,7 +22,9 @@ public class Personnage extends Case implements Data {
     /**
      * correspond au caractere ou est placé le personnage
      */
-    private char caseGrille; 
+    private char caseGrille = '.';
+    
+    public boolean boolDeplacement = false;
    
     /**
      * constructeur de la classe Personnage
@@ -55,7 +57,7 @@ public class Personnage extends Case implements Data {
             grilleChar[posX][posY] = Data.WATER;
         else if(caseGrille == Data.ICE_S)//si banquise epaisse on remplace par une banquise normal
             grilleChar[posX][posY] = Data.ICE_N;
-        
+        boolDeplacement = true;
         caseGrille = grilleChar[newPosX][newPosY]; //on recupère le symbole ou est placé le personnage
         
         //on place la nouvelle position du personnage dans le tableau 

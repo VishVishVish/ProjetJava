@@ -43,9 +43,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     Personnage perso;
     Chrono chrono;
     Save save;
-    
-    
-    
+
     Monstre monstre = new Monstre(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1],'M');
     //Thread threadMonstre = new Thread(monstre);
     //Thread monstre2 = new Thread();
@@ -55,6 +53,8 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     boolean boolRefresh = false;
     Thread refreshGrille; //permet de refresh la grille du niveau
     int intRefreshGrille = 50; //durée entre chaque refresh
+    
+    int score = 0;
     
 
     /**
@@ -78,9 +78,9 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         this.panelNiveau.enregistreEcouteur(this);
         this.panelTuto.enregistreEcouteur(this);
         this.panelScore.enregistreEcouteur(this);
+        this.panelVictoire.enregistreEcouteur(this);
         this.fenetre.enregistreEcouteur(this);
-        
-        
+ 
         save = new Save();
         chrono = new Chrono();
         chrono.start();
@@ -88,9 +88,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         //chrono.pause();
   
     }
-   
- 
-    
+
     @Override
     public void actionPerformed(ActionEvent evt) {
         switch (evt.getActionCommand()) {
@@ -101,15 +99,13 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 fenetre.setFenetre(panelNiveau);
                 boolRefresh = true;
                 chrono.setTemps(0);
+                score = 0;
                 refreshGrille = new Thread(this);
                 refreshGrille.start();
                
                 panelNiveau.setGrille(grille);
                 
                 //on lance le chrono
-                
-                
- 
                 break;
             case "CONTINUER":
                 save.lire();
@@ -133,6 +129,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 fenetre.setFenetre(panelTuto);     
                 break;
             case "MENU":
+                System.out.println("ect");
                 fenetre.setFenetre(panelMenu);     
                 break;
             case "QUITTER":
@@ -142,6 +139,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 panelNiveau.setGrille(grille);
                 perso = panelNiveau.getPersonnage();
                 //chrono.setTemps(panelNiveau.getTemps());
+                score = panelNiveau.getScore(); 
                 break;
             case "SAUVEGARDER ET QUITTER":
                 boolRefresh = false;
@@ -186,20 +184,30 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             case ">>": 
                 panelTuto.dernier();
                 break;
+/***PANELVICTOIRE***/
+            case "VALIDER ET QUITTER": 
+                panelVictoire.setNom();
+                Scores sc = new Scores();
+                sc.addScore(panelVictoire.getNom(), panelNiveau.getScore(), panelNiveau.getTemps());
+                panelScore.setListeScores(sc);
+                fenetre.requestFocus();
+                fenetre.setFenetre(panelMenu);
+                break;
             default:
                 System.out.println("evt detecté mais non traité");
                 break;  
         }
         
+        /*
         if(perso.getCaseGrille()==Data.EXIT) // permet de passer au niveau suivant lorsque            
-            prochainNiveau();
-        
-        
+            prochainNiveau();*/
+          
     }
     
     public void prochainNiveau(){
         int niveau = panelNiveau.getNumNiveau()+1;
         panelNiveau.setTemps(chrono.getTemps());
+        panelNiveau.setScore(score);
         switch (niveau) {
             case 1://passage au niveau 1
                 panelNiveau.setNiveau(niveau);
@@ -229,7 +237,14 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             default://tous les niveaux on été terminé
                 boolRefresh = false;
                 monstre.boolActif = false;
-                fenetre.setFenetre(panelMenu);
+                
+                panelNiveau.setScore(score);
+                panelNiveau.setTemps(chrono.getTemps());
+                
+                panelVictoire.setLabelScore(panelNiveau.getScore());
+                panelVictoire.setLabelTemps(panelNiveau.getTemps());
+                
+                fenetre.setFenetre(panelVictoire);
                 perso.setCaseGrille(ICE_N);
                 break;
         }
@@ -249,7 +264,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             case KeyEvent.VK_8:    
                 perso.deplacementHaut();
                 grille.setGrilleChar(perso.newPosition(grille));
-                //panelNiveau.setGrille(grille);
+                
                 break;
             case KeyEvent.VK_DOWN:  
             case KeyEvent.VK_S:
@@ -276,14 +291,10 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 break;
         }
         
-       
-        
         if(perso.getCaseGrille()==Data.EXIT)
             prochainNiveau();
         //panelNiveau.setGrille(grille);
 
-        
-   
     }
 
     @Override
@@ -301,17 +312,23 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 monstre.reset(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1]);
             }
           
-            //panelNiveau.setGrille(grille);
+            
             panelNiveau.setGrille(grille);
-           
-            panelNiveau.setAffichagePanelControle(chrono.getTemps());
+            
+            
+            if(perso.boolDeplacement) {
+                score+=10;
+                perso.boolDeplacement = false;
+            }
+            
+            //System.out.println(score);
+            panelNiveau.setAffichagePanelControle(score,chrono.getTemps());
             try {
                 Thread.sleep(intRefreshGrille);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
+             
         }
         
        

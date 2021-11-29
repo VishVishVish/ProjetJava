@@ -56,27 +56,7 @@ public class PanelMenu extends JPanel implements Data{
         boutonRegles.setFont(fontBouton2);
         boutonSortie.setFont(fontBouton1);
         
-        
-        /*
-        titre.setFont(new Font("Serif", Font.BOLD, 50));
-        boutonNouvellePartie.setFont(fontBouton);
-        boutonContinuer.setFont(fontBouton);
-        boutonScore.setFont(fontBouton);
-        boutonBonus.setFont(fontBouton);
-        boutonRegles.setFont(fontBouton);
-        boutonSortie.setFont(fontBouton);
-        
-        //on enleve le focus des boutons sinon le keylistener ne marche plus si on appuie sur un bouton 
-        boutonNouvellePartie.setFocusable(false);
-        boutonContinuer.setFocusable(false);
-        boutonScore.setFocusable(false);
-        boutonBonus.setFocusable(false);
-        boutonRegles.setFocusable(false);
-        boutonSortie.setFocusable(false);
-        
-        //on créer un mnemonic sur les boutons du menu
-        boutonNouvellePartie.setMnemonic('T');
-        */
+       
         JPanel panelMilieu = new JPanel(new GridBagLayout());
      
         //panelMilieu.setBackground(new Color(128,255,255));

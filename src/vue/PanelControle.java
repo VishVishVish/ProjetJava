@@ -146,6 +146,13 @@ public class PanelControle extends JPanel implements Data{
         return temps;
     }
     
+    public void setScore(int score){
+        this.score = score;    
+    }
+    
+   public void setLabelScore(){
+        this.labelScore.setText("SCORE : " + score);
+    }
     public void setTemps(int temps){
         this.temps = temps;    
     }

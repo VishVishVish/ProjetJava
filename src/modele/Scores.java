@@ -10,16 +10,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * classe s'occupant des scores à la fin d'une partie 
  * @author vishn
  */
 public class Scores {
@@ -64,7 +62,8 @@ public class Scores {
         }
         
         
-        for(int i = 0; i<5; i++) {
+        
+        for( int i = 0; i<5; i++) {
             String [] scoreMax = this.max();
             classement.add(scoreMax);
             listeScore.remove(scoreMax);
@@ -81,9 +80,7 @@ public class Scores {
                 nom = "----";
             }
         }
-        
-        
-            
+    
         String newScore = nom + convertNumberToString(score) + convertNumberToString(temps);
         
  
@@ -96,7 +93,11 @@ public class Scores {
         }
     }
     
-    
+    /**
+     * permet de convertir une donnée numérique dans un format adapté pour le fichier externe exemple : 12 -> 0012
+     * @param number correspond à une valeur numérique tel que le temps ou le score
+     * @return une chaine de 4 caractères représentant la valeur numérique
+     */
     public String convertNumberToString(int number){
         String string;
         if(number>9999)
@@ -119,15 +120,32 @@ public class Scores {
         
     }
     
+    /**
+     * 
+     * @param i
+     * @return 
+     */
     public String[] getClassement(int i){
         return classement.get(i);
     }
+    /**
+     * retourne le classement 
+     * @return corresond le classemnt 
+     */
     public ArrayList<String[]> getClassement(){
         return classement;
     }
     
+    /**
+     * retourne le meilleure score de la liste des scores 
+     * @return correspond au meilleure score de la liste des scores
+     */
     public String[] max(){
-                 
+        if(listeScore.size()<=0) {
+            String [] scoreVide = {"    ", "    ", "    "}; 
+            return scoreVide;
+        }
+             
         String [] scoreMax = listeScore.get(0);
      
         for(int i = 0; i<listeScore.size(); i++){   
@@ -135,18 +153,23 @@ public class Scores {
                scoreMax = listeScore.get(i);
        
             }
-        }
-        
-        return scoreMax;
-            
+        }  
+        return scoreMax;            
     }
     
    
-    
+    /**
+     * retourne la liste des scores 
+     * @return correspond à la liste des scores
+     */
     public ArrayList<String[]> getListeScore(){
         return listeScore;
     }
     
+    /**
+     * modifie la liste des scores
+     * @param listeScore correspond à la nouvelle liste des scores 
+     */
     public void setListeScore(ArrayList<String[]> listeScore){
         this.listeScore =  listeScore;
     }

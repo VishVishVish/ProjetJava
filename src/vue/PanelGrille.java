@@ -33,7 +33,7 @@ public class PanelGrille extends JPanel implements Data {
        
        for(int li = 0; li<grille.getNbrLigne();li++){
             for(int co = 0; co<grille.getNbrColonne();co++){
-                JLabel labelCaseGrille = convertToJLabel(grille.getGrilleChar()[li][co]);
+                JLabel labelCaseGrille = convertToImage(grille.getGrilleChar()[li][co]);
                 //labelCaseGrille.setSize(50,50);
                 
               
@@ -45,6 +45,50 @@ public class PanelGrille extends JPanel implements Data {
     
    
     
+    public JLabel convertToImage(char caractere){
+        JLabel label = new JLabel(); 
+        
+        switch(caractere){
+            case Data.ICE_N :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/ice_n.png")));
+                break;
+            case Data.WATER :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/water.png")));
+                break;    
+            case Data.XATER :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/water2.png")));
+                break;    
+            case Data.BLOCK :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/block.png")));
+                break;    
+            case Data.PERSO :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/perso.png")));
+                break;
+            case Data.ICE_S :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/ice_s.png")));
+                break;
+            case Data.EXIT :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/exit.png")));
+                break;    
+            case Data.MNSTR :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/monstre.png")));
+                break;    
+            case Data.TUNNE :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/tunnel.png")));
+                break;    
+            case Data.POT_L :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/potion.png")));
+                break;    
+            default:
+                label.setIcon(new ImageIcon(getClass().getResource("/img/default.png")));
+                break;
+        }
+        label.setOpaque(true);
+        
+        //label.setSize(new Dimension(100,100));
+        return label;
+    }
+    /*
     public JLabel convertToJLabel(char caractere){
         JLabel label = new JLabel(); 
         switch(caractere){
@@ -62,8 +106,8 @@ public class PanelGrille extends JPanel implements Data {
                 break;    
             case Data.PERSO :
                 //label.setBackground(Color.RED);
-                label.setIcon(Data.IMG_PERSO);
-                //label.setIcon(new ImageIcon(getClass().getResource("/res/perso.png")));
+                //label.setIcon(Data.IMG_PERSO);
+                label.setIcon(new ImageIcon(getClass().getResource("/img/perso.png")));
                 break;
             case Data.ICE_S :
                 //label.setBackground(Color.GRAY);
@@ -84,7 +128,7 @@ public class PanelGrille extends JPanel implements Data {
         
         //label.setSize(new Dimension(100,100));
         return label;
-    }
+    }*/
     
     public void setGrille(Grille grille){
         this.grille = grille;
@@ -92,7 +136,7 @@ public class PanelGrille extends JPanel implements Data {
         //this.removeAll();
         for(int li = 0; li<grille.getNbrLigne();li++){
             for(int co = 0; co<grille.getNbrColonne();co++){
-                 this.add(this.convertToJLabel(grille.getGrilleChar()[li][co]));
+                 this.add(this.convertToImage(grille.getGrilleChar()[li][co]));
                  //this.revalidate();
             }
             

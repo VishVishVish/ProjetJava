@@ -77,16 +77,14 @@ public class PanelNiveau extends JPanel implements Data{
         grille.setGrilleChar(perso.setPosition(grille)); 
     }
     
-    public void setAffichagePanelControle(int temps){
+    public void setAffichagePanelControle(int score, int temps){
+        panelControle.setScore(score);
+        panelControle.setLabelScore();
         panelControle.setTemps(temps);
         panelControle.setLabelTemps();
         //this.setPanelControle(panelControle);
     }
 
-   
-    
-    
-    
     public PanelGrille getPanelGrille(){
         return panelGrille;
     }

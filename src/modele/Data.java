@@ -19,27 +19,31 @@ public interface Data {
     
     
     /*CARACTERE CHAR DES CASES DE LA GRILLE*/
-    public char PERSO = '&';
-    public char BLOCK = 'B';
-    public char WATER = 'x';
+    public char PERSO = '&'; // correspond au personnage
+    public char BLOCK = 'B'; //correspond à un mur statique
+    public char WATER = 'x'; //correspond à de l'eau
+    public char XATER = 'y'; //correspond à de l'eau utilisé pour le décor
     public char ICE_N = '.'; // banquise normal, N pour normal
     public char ICE_S = 'o'; // banquise epais, S pour strong 
-    public char EXIT = 'S';
-    public char MNSTR = 'M';
-    public char POT_L = 'L'; //potion de legerete
+    public char EXIT  = 'S'; //correspond à la case de sortie pour le personnage 
+    public char MNSTR = 'M'; //correspond au monstre
+    public char POT_L = 'L'; //correspond à la potion de legerete
+    public char TUNNE = 'T'; //correspond à la brique
+    public char BRICK = 'B'; //correspond à la brique
+    public char TONDE = 'T'; //correspond à la tondeuse
     
     /*SPRITE DU JEU, IMAGES CONTENUE DANS LE DOSSIER IMG DU PROJET*/
-    public ImageIcon TEST = new ImageIcon("img/test.png");
-    public ImageIcon IMG_PERSO = new ImageIcon("img/perso.png");
+    //public ImageIcon TEST = new ImageIcon("img/test.png");
+    //public ImageIcon IMG_PERSO = new ImageIcon("img/perso.png");
 
-    
+    /*
     public ImageIcon IMG_MONSTRE = new ImageIcon("img/monstre_test.png");
     public ImageIcon IMG_BLOCK = new ImageIcon("img/block.png");
     public ImageIcon IMG_WATER = new ImageIcon("img/water.png");
     public ImageIcon IMG_ICE_N = new ImageIcon("img/ice_n.png");
     public ImageIcon IMG_ICE_S = new ImageIcon("img/ice_s.png");
     public ImageIcon IMG_EXIT = new ImageIcon();
-    public ImageIcon IMG_POT_L = new ImageIcon();
+    public ImageIcon IMG_POT_L = new ImageIcon();*/
     
     /*COULEURS UTILISE POUR L'IHM*/
     public Color COLOR_SNOW = new Color(174,255,255);
@@ -99,7 +103,7 @@ public interface Data {
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK},//7  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//8  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//9  
-                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//10  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,EXIT ,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//10  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//11  
                                {BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//12  
                                {BLOCK,ICE_N,ICE_S,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_S,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//13  
@@ -128,13 +132,13 @@ public interface Data {
    public char LEVEL_1 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//1
                                {BLOCK,EXIT ,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK},//2                             
-                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//3  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,TUNNE,BLOCK,ICE_N,BLOCK},//3  
                                {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,BLOCK},//4  
-                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK},//5  
-                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//6  
-                               {BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//7  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,WATER,WATER,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK},//5  
+                               {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,WATER,XATER,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//6  
+                               {BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,WATER,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//7  
                                {BLOCK,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//8  
-                               {BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//9  
+                               {BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,TUNNE,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//9  
                                {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//10  
                                {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK},//11  
                                {BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_S,ICE_N,ICE_N,BLOCK},//12  
