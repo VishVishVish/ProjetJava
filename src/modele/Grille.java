@@ -85,7 +85,7 @@ public class Grille implements Data{
     }
     
     public Monstre setMonstre(Monstre monstre){
-        monstre.newPosition(this.grilleChar);
+        //monstre.newPosition(this.grilleChar);
         
         return monstre;
     }

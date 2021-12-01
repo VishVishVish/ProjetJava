@@ -80,11 +80,9 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     Scores scores;
 
     
-    Monstre monstre = new Monstre(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1],'M');
-    //Thread threadMonstre = new Thread(monstre);
-    //Thread monstre2 = new Thread();
-    Monstre monstre2 = new Monstre(5,5,'M');
-    Brique brique = new Brique(7,9, 'b');
+    Monstre monstreHautBas = new Monstre(0,0,MNSTR, 1);
+    Monstre monstreGaucheDroite = new Monstre(0,0,MNSTR,1);
+    Brique brique = new Brique(7,9, BRICK);
     
     //attributs de la classe Controleur liès à l'actualisation de la page
     boolean boolRefresh = false;
@@ -135,7 +133,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         switch (evt.getActionCommand()) {
 /***PANELMENU***/
             case "NOUVELLE PARTIE":
-                monstre.boolActif = false; // on stoppe le déplacement des threads
+                //monstre.boolActif = false; // on stoppe le déplacement des threads
                 panelNiveau.setNiveau(1);
                 perso = panelNiveau.getPersonnage();
                 fenetre.setFenetre(panelNiveau);
@@ -183,7 +181,10 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 panelNiveau.setGrille(grille);
                 perso = panelNiveau.getPersonnage();
                 //chrono.setTemps(panelNiveau.getTemps());
-                score = panelNiveau.getScore(); 
+                score = panelNiveau.getScore();
+                monstreHautBas.reset(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1]);
+                monstreGaucheDroite.reset(Data.POS_MONSTRE[1][0],Data.POS_MONSTRE[1][1]);
+                brique = new Brique(7,9, BRICK);
                 break;
             case "SAUVEGARDER ET QUITTER":
                 boolRefresh = false;
@@ -194,26 +195,29 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 fenetre.setFenetre(panelMenu);     
                 break;
 /***PANELNIVEAU***/
-            case "\u25B2": //déplacement haut    
+            case "\u25B2": //déplacement haut
+                if(grille.getGrilleChar()[perso.getX()-1][perso.getY()]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()] == BLOCK)
+                    break;
                 perso.deplacementHaut();
-                grille.setGrilleChar(perso.newPosition(grille));
-                panelNiveau.setGrille(grille);            
+                grille.setGrilleChar(perso.newPosition(grille));         
                 break;
-            case "\u25BA": //déplacement droite 
+            case "\u25BA": //déplacement droite
+                if(grille.getGrilleChar()[perso.getX()][perso.getY()+1]==BRICK && grille.getGrilleChar()[brique.getNewX()][brique.getNewY()+1] == BLOCK)
+                    break;    
                 perso.deplacementDroite();
-                grille.setGrilleChar(perso.newPosition(grille));
-                panelNiveau.setGrille(grille);        
+                grille.setGrilleChar(perso.newPosition(grille));     
                 break;
             case "\u25BC": //déplacement bas
+                if(grille.getGrilleChar()[perso.getX()+1][perso.getY()]==BRICK && grille.getGrilleChar()[brique.getNewX()+1][brique.getNewY()] == BLOCK)
+                    break;
                 perso.deplacementBas();
-                grille.setGrilleChar(perso.newPosition(grille));
-                panelNiveau.setGrille(grille);        
-                
+                grille.setGrilleChar(perso.newPosition(grille));                   
                 break;
-            case "\u25C4": //déplacement gauche 
+            case "\u25C4": //déplacement gauche
+                if(grille.getGrilleChar()[perso.getX()][perso.getY()-1]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()-1] == BLOCK)
+                    break;
                 perso.deplacementGauche();
-                grille.setGrilleChar(perso.newPosition(grille));
-                panelNiveau.setGrille(grille);        
+                grille.setGrilleChar(perso.newPosition(grille));   
                 break;
 /***PANELTUTO***/
             case "<<": 
@@ -231,8 +235,6 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
 /***PANELVICTOIRE***/
             case "VALIDER ET QUITTER": 
                 panelVictoire.setNom();
-                //Scores sc = new Scores();
-                
                 scores.addScore(panelVictoire.getNom(), panelNiveau.getScore(), panelNiveau.getTemps());
                 panelScore.setListeScores(scores);
                 fenetre.requestFocus();
@@ -242,10 +244,6 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 System.out.println("evt detecté mais non traité");
                 break;  
         }
-        
-        /*
-        if(perso.getCaseGrille()==Data.EXIT) // permet de passer au niveau suivant lorsque            
-            prochainNiveau();*/
           
     }
     
@@ -273,15 +271,22 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             case 5://passage au niveau 5
                 panelNiveau.setNiveau(niveau);
                 perso = panelNiveau.getPersonnage();
-                System.out.println("niveau 5 nous ajoutons les monstres");
-                monstre = new Monstre(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1],'M');
-                monstre.setGrilleChar(grille.getGrilleChar());
-                grille.setGrilleChar(monstre.getGrilleChar());
-                monstre.start();
+                
+                //on ajoute un monstre haut bas
+                monstreHautBas = new Monstre(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1],MNSTR, 1);
+                monstreHautBas.setGrilleChar(grille.getGrilleChar());
+                grille.setGrilleChar(monstreHautBas.getGrilleChar());
+                monstreHautBas.start();
+                //on ajoute un monstre gauche droite 
+                monstreGaucheDroite = new Monstre(Data.POS_MONSTRE[1][0],Data.POS_MONSTRE[1][1],MNSTR, 0);
+                monstreGaucheDroite.setGrilleChar(grille.getGrilleChar());
+                grille.setGrilleChar(monstreGaucheDroite.getGrilleChar());
+                monstreGaucheDroite.start();
                 break;
             default://tous les niveaux on été terminé
                 boolRefresh = false;
-                monstre.boolActif = false;
+                monstreGaucheDroite.boolActif = false;
+                monstreHautBas.boolActif = false;
                 
                 panelNiveau.setScore(score);
                 panelNiveau.setTemps(chrono.getTemps());
@@ -310,7 +315,6 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 //System.out.println("----" + grille.getGrilleChar()[perso.getNewX()-1][perso.getNewY()]);
                 if(grille.getGrilleChar()[perso.getX()-1][perso.getY()]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()] == BLOCK)
                     break;
-               
                 perso.deplacementHaut();
                 grille.setGrilleChar(perso.newPosition(grille));
 
@@ -336,33 +340,18 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_Q:
             case KeyEvent.VK_4:
-                 if(grille.getGrilleChar()[perso.getX()][perso.getY()-1]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()-1] == BLOCK)
+                if(grille.getGrilleChar()[perso.getX()][perso.getY()-1]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()-1] == BLOCK)
                     break;
                 perso.deplacementGauche();
                 grille.setGrilleChar(perso.newPosition(grille));
                 //panelNiveau.setGrille(grille); 
                 break;
+            case KeyEvent.VK_ASTERISK:
+                prochainNiveau();
             default : 
                 break;
         }
         
-        if(perso.getCaseGrille()==Data.EXIT)
-            prochainNiveau();
-        
-        //System.out.println("brique = " + brique.getNewX() + brique.getNewY() );
-        //if(grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()] != 'B'){
-            if(perso.getCaseGrille()==Data.BRICK){
-                grille.setGrilleChar(brique.newPosition(grille.getGrilleChar(), perso));
-                perso.setCaseGrille('.');
-            }
-       // }
-        
-            System.out.println("stop");
-        
-        
-            
-        
-        //panelNiveau.setGrille(grille);
 
     }
 
@@ -375,22 +364,45 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     public void run() {
           
         while(boolRefresh){
-            if(monstre.getCaseGrille() == Data.PERSO || monstre2.getCaseGrille() == Data.PERSO || perso.getCaseGrille() == Data.MNSTR){
+            if(monstreGaucheDroite.getCaseGrille() == Data.PERSO || monstreHautBas.getCaseGrille() == Data.PERSO || perso.getCaseGrille() == Data.MNSTR){
                 panelNiveau.resetNiveau();
                 perso = panelNiveau.getPersonnage();
-                monstre.reset(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1]);
+                monstreHautBas.reset(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1]);
+                monstreGaucheDroite.reset(Data.POS_MONSTRE[1][0],Data.POS_MONSTRE[1][1]);
             }
-          
+            // Si la perso entre en collision avec la brique
+            if(perso.getCaseGrille()==Data.BRICK){
+                grille.setGrilleChar(brique.newPosition(grille.getGrilleChar(), perso));
+                perso.setCaseGrille('.');
+            }
+            
+            //si la personne arrive sur la case exit 
+            if(perso.getCaseGrille()==Data.EXIT)
+                prochainNiveau();
+        
+        
+            //si le perso arrive sur la case tunnel 
+            if(perso.getCaseGrille() == Data.TUNNE)//si on passe sur un tunnel on determine les nouvelles positions
+            {
+              if(perso.getNewX() == 9 && perso.getNewY()==5) {
+                perso.setNewX(5);
+                perso.setNewY(7);
+                perso.setCaseGrille('.');
+                grille.setGrilleChar(perso.newPosition(grille));
+              }
+            }
+            
+            if(perso.getCaseGrille() == Data.TONDE){
+                System.out.println("perso sur la case tondeuse");
+            }
             
             panelNiveau.setGrille(grille);
-            
-            
+                   
             if(perso.boolDeplacement) {
                 score+=10;
                 perso.boolDeplacement = false;
             }
             
-            //System.out.println(score);
             panelNiveau.setAffichagePanelControle(score,chrono.getTemps());
             try {
                 Thread.sleep(intRefreshGrille);

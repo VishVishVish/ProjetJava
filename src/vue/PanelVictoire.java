@@ -24,14 +24,14 @@ import static modele.Data.COLOR_BACK;
 import static modele.Data.COLOR_ICE;
 
 /**
- *
+ * correspond à la page de victoire 
  * @author vishn
  */
 public class PanelVictoire extends JPanel {
     
     String nom = "----";
     
-    JLabel labelTitre = new JLabel("Félicitations", JLabel.CENTER);
+    JLabel labelTitre = new JLabel("Félicitations !", JLabel.CENTER);
     JLabel labelSaisirNom = new JLabel("SAISIR VOTRE NOM:");
     JTextField textField = new JTextField("");
     JLabel labelStrScore = new JLabel("SCORE:", JLabel.CENTER);
@@ -48,6 +48,9 @@ public class PanelVictoire extends JPanel {
     Font fontLabel = new Font(Data.fontPolice, Font.BOLD, 50);
     Font fontBouton = new Font(Data.fontPolice, Font.BOLD, 30);
     
+    /**
+     * constructeur de la page de victoire
+     */
     public PanelVictoire() {
         JPanel panelHaut = new JPanel();
         JPanel panelMilieu = new JPanel(new GridBagLayout());
@@ -154,20 +157,35 @@ public class PanelVictoire extends JPanel {
         boutonValider.addActionListener(controleur);
     }
     
+    
     public void setFocusableBouton(boolean bool) {
         boutonValider.setFocusable(bool);
     }
     
+    /**
+     * permet de modifier le label de score
+     * @param score correspond au nouveau score
+     */
     public void setLabelScore(int score){
         this.labelScore.setText(String.valueOf(score));
     }
+    /**
+     * permet de modifier la label temps 
+     * @param temps corrspond au nouveau temps
+     */
     public void setLabelTemps(int temps){
         this.labelTemps.setText(String.valueOf(temps));
     }
-    
+    /**
+     * retourne le nom de la personne 
+     * @return correspond au nom de la personne 
+     */
     public String getNom(){
         return this.nom;
     }
+    /**
+     * initialise le nom de l'utilisateur avec le nom inscrit dans la zone de texte 
+     */
     public void setNom(){
         this.nom = textField.getText();
     }

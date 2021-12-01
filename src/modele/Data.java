@@ -59,11 +59,11 @@ public interface Data {
     /*NIVEAUX DU JEU RESPECTANT LE CAHIER DES CHARGES*/
    public char LEVEL_5 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//1
-                               {BLOCK,MNSTR,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//2                             
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//2                             
                                {BLOCK,ICE_N,ICE_N,ICE_N,EXIT ,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//3  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//4  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//5  
-                               {BLOCK,MNSTR,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//6  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//6  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//7  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//8  
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//9  
@@ -139,7 +139,7 @@ public interface Data {
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//7  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BRICK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//8  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//9  
-                               {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//10  
+                               {WATER,WATER,BLOCK,ICE_N,ICE_N,TUNNE,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//10  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,WATER,WATER},//11  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER,WATER,WATER},//12  
                                {WATER,WATER,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,WATER,WATER,XATER,WATER},//13  
@@ -172,7 +172,7 @@ public interface Data {
     int POS_PERSO [][] = {{4,4},{8,3},{9,9},{13,1},{1,1},{2,2}};
     
     //positions des monstres du niveau 5
-    int POS_MONSTRE [][] = {{1,1},{1,5}};
+    int POS_MONSTRE [][] = {{1,1},{10,10}};
     
     public static Font fontBouton = new Font("Serif", Font.BOLD, 20); //correspond à la font des boutons du menu principal
 }
