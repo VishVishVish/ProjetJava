@@ -14,6 +14,7 @@ import modele.Personnage;
 import modele.Chrono;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modele.Brique;
 import modele.Monstre;
 import modele.Save;
 import modele.Scores;
@@ -25,32 +26,70 @@ import vue.*;
  */
 public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     
-    //les panels du package vue
+    /**
+     * correspond à la fenêtre
+     */
     Fenetre fenetre;
+    /**
+     * correspond au panel du menu principal
+     */
     PanelMenu panelMenu;
+    /**
+     * correspond au panel du niveau regroupant le panelGrille et le panelControle
+     */
     PanelNiveau panelNiveau;
+    /**
+     * correspond au panel de la grille du panelNiveau
+     */
     PanelGrille panelGrille;
+    /**
+     * correspond au panelTuto
+     */
     PanelTuto panelTuto;
+    /**
+     * correspond au panelScore
+     */
     PanelScore panelScore;
+    /**
+     * correspond au panelVictoire
+     */
     PanelVictoire panelVictoire;
-    
-    //package modele
+    /**
+     * correspond au panelBonus
+     */
+    PanelBonus panelBonus;
+    /**
+     * correspond à la grille du panelGrille
+     */
     Grille grille;
+    /**
+     * correspond au personnage 
+     */
     Personnage perso;
+    /**
+     * correspond à un chronomètre utilisé dans l'affichage du temps dans le panelControle
+     */
     Chrono chrono;
+    /**
+     * correspond à la classe qui manipule les données de sauvegarde
+     */
     Save save;
+    /**
+     * correspond à la classe qui manipule les données lièes au scores 
+     */
     Scores scores;
 
+    
     Monstre monstre = new Monstre(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1],'M');
     //Thread threadMonstre = new Thread(monstre);
     //Thread monstre2 = new Thread();
     Monstre monstre2 = new Monstre(5,5,'M');
+    Brique brique = new Brique(7,9, 'b');
     
-    //variables de la classe Controleur
+    //attributs de la classe Controleur liès à l'actualisation de la page
     boolean boolRefresh = false;
     Thread refreshGrille; //permet de refresh la grille du niveau
     int intRefreshGrille = 50; //durée entre chaque refresh
-    
     int score = 0;
     
 
@@ -60,7 +99,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
      * @param panelNiveau correspond au panel des niveaux du jeu
      * @param fenetre correspond à la fenêtre du jeu
      */
-    public Controleur(PanelMenu panelMenu, PanelNiveau panelNiveau, PanelScore panelScore,  PanelTuto panelTuto, PanelVictoire panelVictoire, Fenetre fenetre){
+    public Controleur(PanelMenu panelMenu, PanelNiveau panelNiveau, PanelScore panelScore,  PanelTuto panelTuto, PanelBonus panelBonus, PanelVictoire panelVictoire, Fenetre fenetre){
         this.panelMenu = panelMenu;
         this.panelNiveau = panelNiveau;
         this.panelGrille = panelNiveau.getPanelGrille();
@@ -69,6 +108,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         this.fenetre = fenetre;
         this.panelTuto = panelTuto;
         this.panelScore = panelScore;
+        this.panelBonus = panelBonus;
         this.panelVictoire = panelVictoire;
         
         this.panelMenu.enregistreEcouteur(this);
@@ -76,6 +116,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         this.panelTuto.enregistreEcouteur(this);
         this.panelScore.enregistreEcouteur(this);
         this.panelVictoire.enregistreEcouteur(this);
+        this.panelBonus.enregistreEcouteur(this);
         this.fenetre.enregistreEcouteur(this);
  
         save = new Save();
@@ -84,23 +125,25 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         chrono.start();
         
         //chrono.pause();
-  
     }
-
+    /**
+     * permet de détecter les actions liées principalement aux boutons 
+     * @param evt 
+     */
     @Override
     public void actionPerformed(ActionEvent evt) {
         switch (evt.getActionCommand()) {
 /***PANELMENU***/
             case "NOUVELLE PARTIE":
-                panelNiveau.setNiveau(5);
+                monstre.boolActif = false; // on stoppe le déplacement des threads
+                panelNiveau.setNiveau(1);
                 perso = panelNiveau.getPersonnage();
                 fenetre.setFenetre(panelNiveau);
-                boolRefresh = true;
-                chrono.setTemps(0);
-                score = 0;
+                boolRefresh = true; //on active le refresh de la page
+                chrono.setTemps(0); //on rénitialise le temps à 0
+                score = 0; //on rénitialise le score à 0
                 refreshGrille = new Thread(this);
                 refreshGrille.start();
-               
                 panelNiveau.setGrille(grille);
                 
                 //on lance le chrono
@@ -114,6 +157,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 chrono.setTemps(save.getTemps());
                 refreshGrille = new Thread(this);
                 refreshGrille.start();
+                score = panelNiveau.getScore();
                 
                 break;
             case "SCORE":
@@ -123,6 +167,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 fenetre.setFenetre(panelScore);
                 break;
             case "BONUS":
+                fenetre.setFenetre(panelBonus);
                 break;
             case "RÈGLES":
                 fenetre.setFenetre(panelTuto);     
@@ -261,14 +306,20 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             
             case KeyEvent.VK_UP:
             case KeyEvent.VK_Z:
-            case KeyEvent.VK_8:    
+            case KeyEvent.VK_8:
+                //System.out.println("----" + grille.getGrilleChar()[perso.getNewX()-1][perso.getNewY()]);
+                if(grille.getGrilleChar()[perso.getX()-1][perso.getY()]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()] == BLOCK)
+                    break;
+               
                 perso.deplacementHaut();
                 grille.setGrilleChar(perso.newPosition(grille));
-                
+
                 break;
             case KeyEvent.VK_DOWN:  
             case KeyEvent.VK_S:
             case KeyEvent.VK_2:
+                if(grille.getGrilleChar()[perso.getX()+1][perso.getY()]==BRICK && grille.getGrilleChar()[brique.getNewX()+1][brique.getNewY()] == BLOCK)
+                    break;
                 perso.deplacementBas(); 
                 grille.setGrilleChar(perso.newPosition(grille));
                 //panelNiveau.setGrille(grille); 
@@ -276,13 +327,17 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             case KeyEvent.VK_RIGHT:
             case KeyEvent.VK_D:
             case KeyEvent.VK_6:
+                if(grille.getGrilleChar()[perso.getX()][perso.getY()+1]==BRICK && grille.getGrilleChar()[brique.getNewX()][brique.getNewY()+1] == BLOCK)
+                    break;    
                 perso.deplacementDroite();
                 grille.setGrilleChar(perso.newPosition(grille));
                 //panelNiveau.setGrille(grille); 
                 break;
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_Q:
-            case KeyEvent.VK_4:    
+            case KeyEvent.VK_4:
+                 if(grille.getGrilleChar()[perso.getX()][perso.getY()-1]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()-1] == BLOCK)
+                    break;
                 perso.deplacementGauche();
                 grille.setGrilleChar(perso.newPosition(grille));
                 //panelNiveau.setGrille(grille); 
@@ -293,6 +348,20 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         
         if(perso.getCaseGrille()==Data.EXIT)
             prochainNiveau();
+        
+        //System.out.println("brique = " + brique.getNewX() + brique.getNewY() );
+        //if(grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()] != 'B'){
+            if(perso.getCaseGrille()==Data.BRICK){
+                grille.setGrilleChar(brique.newPosition(grille.getGrilleChar(), perso));
+                perso.setCaseGrille('.');
+            }
+       // }
+        
+            System.out.println("stop");
+        
+        
+            
+        
         //panelNiveau.setGrille(grille);
 
     }

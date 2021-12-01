@@ -24,6 +24,8 @@ public class Personnage extends Case implements Data {
      */
     private char caseGrille = '.';
     
+    public int direction;
+    
     /**
      * permet de savoir si le personnage s'est déplacé, utile pour le rajout de points dans le score
      */
@@ -52,7 +54,7 @@ public class Personnage extends Case implements Data {
         
         char grilleChar [][] = grille.getGrilleChar();
         
-        if(grilleChar[newPosX][newPosY]==Data.WATER || grilleChar[newPosX][newPosY]==Data.BLOCK){ //bloque le chemin si on veut passer sur l'eau
+        if(grilleChar[newPosX][newPosY]==Data.WATER || grilleChar[newPosX][newPosY]==Data.BLOCK){ //bloque le chemin si on veut passer sur l'eau ou un mur
             newPosX = posX;
             newPosY = posY;
             return grilleChar;
@@ -71,10 +73,12 @@ public class Personnage extends Case implements Data {
         caseGrille = grilleChar[newPosX][newPosY]; //on recupère le symbole ou est placé le personnage
         if(caseGrille == Data.POT_L){
             potionLeger = 5;
+            caseGrille = Data.WATER;
            
         }
-            
-            
+        
+        
+        
         boolDeplacement = true;
         
         //on place la nouvelle position du personnage dans le tableau 
@@ -104,24 +108,28 @@ public class Personnage extends Case implements Data {
      */
     public void deplacementHaut(){
         this.newPosX--; 
+        this.direction=0;
     }
     /**
      * permet de modifier les coordonnées du personnage permettant de faire un déplacement vers la droite dans la grille
      */
     public void deplacementDroite(){
         this.newPosY++;
+        this.direction=1;
     }
     /**
      * permet de modifier les coordonnées du personnage permettant de faire un déplacement vers la gauche dans la grille
      */
     public void deplacementGauche(){
         this.newPosY--;
+        this.direction=3;
     }
     /**
      * permet de modifier les coordonnées du personnage permettant de faire un déplacement vers le bas dans la grille
      */
     public void deplacementBas(){
         this.newPosX++;
+        this.direction=2;
     }
     
     /**

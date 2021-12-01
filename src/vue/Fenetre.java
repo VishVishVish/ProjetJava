@@ -12,7 +12,7 @@ import javax.swing.*;
 import modele.Data;
 
 /**
- *
+ * correspond à la fenêtre de jeu comprenant les différents panels sous forme de page de jeu
  * @author vishn
  */
 public class Fenetre extends JFrame implements Data{

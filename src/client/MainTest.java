@@ -30,7 +30,7 @@ public class MainTest extends JFrame implements Data{
  
  public static void  main(String[] args) throws Exception{
      
-     
+     /*
      Save save = new Save();
      
      save.lire();
@@ -42,7 +42,7 @@ public class MainTest extends JFrame implements Data{
      save.lire();
      
      System.out.println(save.getNumNiveau() + " " + save.getScore() + " " + save.getTemps());
-     
+     */
      //Scores scores = new Scores();
      //scores.addScore("ALED", 456, 12);
      //String [] score = scores.max();
@@ -124,20 +124,31 @@ public class MainTest extends JFrame implements Data{
          //int intArray[][] = {{12,15, 17},{1,2}}; // define an array copyArray to copy contents of intArray
          //int copyArray[] = new int[intArray.length]; // copy contents of intArray to copyArray for (int i=0; i
          
-         /*
-         Grille grille = new Grille(1);
+         
+         
+         
+         
+         Grille grille = new Grille(0);
          grille.affichageGrille();
          Personnage perso = new Personnage(1,1,Data.PERSO);
+         Brique brique = new Brique(1,3,Data.BRICK);
          grille.setGrilleChar(perso.setPosition(grille));
-         grille.affichageGrille();
-         perso.deplacementDroite();
-         grille.setGrilleChar(perso.newPosition(grille));
-         perso.deplacementDroite();
-         grille.setGrilleChar(perso.newPosition(grille));
-         perso.deplacementDroite();
-         grille.setGrilleChar(perso.newPosition(grille));
+         grille.setGrilleChar(brique.setPosition(grille));
          grille.affichageGrille();
          
+         perso.deplacementDroite();
+         grille.setGrilleChar(perso.newPosition(grille));
+         grille.affichageGrille();
+         perso.deplacementDroite();
+         //grille.setGrilleChar(perso.newPosition(grille));
+         grille.affichageGrille();
+         if(perso.getCaseGrille()==Data.BRICK)
+             System.out.println("ok");
+         grille.setGrilleChar(brique.newPosition(grille.getGrilleChar(), perso));
+         grille.affichageGrille();
+         System.out.println(perso.getX()+" " + perso.getY() + " " +perso.getNewX()+" "+perso.getNewY() );
+         
+         /*
          grille = new Grille(1);
          grille.affichageGrille();
          */
