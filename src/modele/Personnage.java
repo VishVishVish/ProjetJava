@@ -32,6 +32,13 @@ public class Personnage extends Case implements Data {
     public boolean boolDeplacement = false;
     
     int potionLeger = 0;
+    
+    
+    public Personnage(){
+        super(0, 0, PERSO);
+        this.newPosX = 0;
+        this.newPosY = 0;
+    }
    
     /**
      * constructeur de la classe Personnage
@@ -62,9 +69,9 @@ public class Personnage extends Case implements Data {
         
         if (potionLeger<=0) {
             if(caseGrille == Data.ICE_N)//si banquise normal on remplace par de l'eau
-            grilleChar[posX][posY] = Data.WATER;
-        else if(caseGrille == Data.ICE_S)//si banquise epaisse on remplace par une banquise normal
-            grilleChar[posX][posY] = Data.ICE_N;
+                grilleChar[posX][posY] = Data.WATER;
+            else if(caseGrille == Data.ICE_S)//si banquise epaisse on remplace par une banquise normal
+                grilleChar[posX][posY] = Data.ICE_N;
         }
         else {
             potionLeger--;
@@ -72,7 +79,7 @@ public class Personnage extends Case implements Data {
         }
         caseGrille = grilleChar[newPosX][newPosY]; //on recupère le symbole ou est placé le personnage
         if(caseGrille == Data.POT_L){
-            potionLeger = 5;
+            potionLeger = 20;
             caseGrille = Data.WATER;
            
         }

@@ -28,23 +28,48 @@ public class Monstre extends Case implements Runnable, Data{
      */
     private char caseGrille;
     
-    private boolean boolDirection = true ; //le monstre commence à se déplacer vers la droite
+    /**
+     * permet de changer la direction du personnage 
+     */
+    private boolean boolDirection = true ; 
     
     /**
      * correspond au type de monstre
      */
     private int typeMonstre; 
     
+    /**
+     * permet de savoir s'il faut refresh la grille 
+     */
     public boolean refresh; //permet au controleur si on doit actualiser le panelNiveau
     
-    int pause = 700; //correspond à la vitesse de déplacement du monstre en ms, 
+    /**
+     * permet de régler la vitesse du monstre
+     */
+    int pause = 200; //correspond à la vitesse de déplacement du monstre en ms, 
     
+    /**
+     * permet de rendre actif le monstre
+     */
     public boolean boolActif;
     
+    /**
+     * le thread du monstre
+     */
     Thread threadMonstre;
     
+    /**
+     * la grille du niveau 
+     */
     private char [][] grilleChar; 
 
+    /**
+     * constructeur de la classe Monstre
+     * @param posX correspond à la ligne dans la grille du niveau
+     * @param posY correspond à la colonne dans la grille du niveau 
+     * @param caractere correspond au caractere du pesonnage dans le niveau 
+     * @param typeMonstre correspond au type de monstre 0 = il se déplace de gauche vers la droite, 1 = il se déplace de haut en bas
+     */
     public Monstre(int posX, int posY, char caractere, int typeMonstre){
         super(posX, posY, caractere);
         this.newPosX = posX;
@@ -57,7 +82,11 @@ public class Monstre extends Case implements Runnable, Data{
         threadMonstre.start();
         
     }
-    
+    /**
+     * permet de reset le monsttre 
+     * @param posX correspond à la nouvelle ligne du personnage
+     * @param posY correspond à la nouvelle colonne du personnage
+     */
     public void reset(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
@@ -67,16 +96,21 @@ public class Monstre extends Case implements Runnable, Data{
         this.boolDirection = true;
     }
     
+    /**
+     * permet de lancer le monstre
+     */
     public void start(){
-        boolActif = true;
-        
-        
+        boolActif = true;  
     }
+    
     
     public void pause(){
         threadMonstre.start();
     }
     
+    /**
+     * correspond au run du monstre qu'il effectue en simultanée au main lorqu'il est actif 
+     */
     @Override
     public void run(){
         while(boolActif) {
@@ -95,7 +129,11 @@ public class Monstre extends Case implements Runnable, Data{
        }     
     }
     
-    
+   /**
+    * permet le déplacement du personnage allant de gauche à droite
+    * @param grilleChar correspond à la grille du niveau 
+    * @return correspond à la grille du niveau qui a été modifié 
+    */ 
    public char[][] newPositionGaucheDroite(char[][] grilleChar){
         //char grilleChar [][] = grilleNiveau.getGrilleChar();
             if(boolDirection){
@@ -137,6 +175,12 @@ public class Monstre extends Case implements Runnable, Data{
                 //grille.affichageGrille();
             return grilleChar;
    }
+   
+   /**
+    * permet le déplacement du personnage allant du haut vers le bas
+    * @param grilleChar correspond à la grille du niveau 
+    * @return correspond à la grille du niveau qui a été modifié 
+    */ 
    public char[][] newPositionHautBas(char[][] grilleChar){
         //char grilleChar [][] = grilleNiveau.getGrilleChar();
             if(boolDirection){

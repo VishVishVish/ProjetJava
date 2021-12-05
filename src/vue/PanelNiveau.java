@@ -12,7 +12,7 @@ import modele.*;
 
 
 /**
- *
+ * correspond à la page de niveau 
  * @author vishn
  */
 public class PanelNiveau extends JPanel implements Data{
@@ -24,7 +24,7 @@ public class PanelNiveau extends JPanel implements Data{
     
     Grille grille;
    
-    Personnage perso;
+    Personnage perso = new Personnage();
     
     
     PanelGrille panelGrille;
@@ -46,6 +46,10 @@ public class PanelNiveau extends JPanel implements Data{
         panelControle.enregistreEcouteur(controleur);
     }
     
+    /**
+     * modifie la grille du niveau 
+     * @param grille correspond à la nouvelle grille du niveau
+     */
     public void setGrille(Grille grille){
         //panelGrille.invalidate();
         panelGrille.removeAll();
@@ -55,7 +59,11 @@ public class PanelNiveau extends JPanel implements Data{
         panelGrille.revalidate();
         
     }
- 
+    
+    /**
+     * modifie le niveau 
+     * @param numNiveau correspond au numéro du niveau 
+     */
     public void setNiveau(int numNiveau){
         this.numNiveau = numNiveau;
         grille.setGrilleChar(Data.LEVELS[this.numNiveau]);   
@@ -91,6 +99,10 @@ public class PanelNiveau extends JPanel implements Data{
     
     public Personnage getPersonnage(){
         return perso;
+    }
+    
+    public void setPersonnage(Personnage perso){
+        this.perso = perso;
     }
     
     public int getScore(){
