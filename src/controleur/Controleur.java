@@ -317,6 +317,24 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                     break;
                 perso.deplacementHaut();
                 grille.setGrilleChar(perso.newPosition(grille));
+                if(perso.getCaseGrille() == Data.TUNNE)//si on passe sur un tunnel on determine les nouvelles positions
+            {
+               int verify = perso.getNewY();
+               int verifx = perso.getNewX();
+
+              if(verify==2 && verifx == 13) {
+
+                perso.setNewY(17);
+                grille.setGrilleChar(perso.newPosition(grille));
+                panelNiveau.setGrille(grille); 
+              }
+              if (verify==17 && verifx == 1){
+
+                  perso.setNewY(4);
+                  grille.setGrilleChar(perso.newPosition(grille));
+                  panelNiveau.setGrille(grille);
+                }
+        }
 
                 break;
             case KeyEvent.VK_DOWN:  
@@ -414,4 +432,5 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         
        
     }
+    
 }

@@ -103,6 +103,7 @@ public class Personnage extends Case implements Data {
         return grille;
     }
     
+    
     /**
      * permet de modifier les coordonnées du personnage permettant de faire un déplacement vers le haut dans la grille
      */
