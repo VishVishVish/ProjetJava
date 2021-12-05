@@ -13,7 +13,7 @@ package modele;
  */
 public class Tondeuse extends Case implements Runnable, Data{
     /**
-    * correspond à la nouvelle position X du personnage 
+    * correspond à la nouvelle position X du personnage ECEMAN
     */
     private int newPosX; 
     /**
