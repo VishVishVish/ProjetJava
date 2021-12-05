@@ -77,8 +77,6 @@ public class Personnage extends Case implements Data {
            
         }
         
-        
-        
         boolDeplacement = true;
         
         //on place la nouvelle position du personnage dans le tableau 

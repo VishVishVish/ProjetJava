@@ -317,25 +317,6 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                     break;
                 perso.deplacementHaut();
                 grille.setGrilleChar(perso.newPosition(grille));
-                if(perso.getCaseGrille() == Data.TUNNE)//si on passe sur un tunnel on determine les nouvelles positions
-            {
-               int verify = perso.getNewY();
-               int verifx = perso.getNewX();
-
-              if(verify==2 && verifx == 13) {
-
-                perso.setNewY(17);
-                grille.setGrilleChar(perso.newPosition(grille));
-                panelNiveau.setGrille(grille); 
-              }
-              if (verify==17 && verifx == 1){
-
-                  perso.setNewY(4);
-                  grille.setGrilleChar(perso.newPosition(grille));
-                  panelNiveau.setGrille(grille);
-                }
-        }
-
                 break;
             case KeyEvent.VK_DOWN:  
             case KeyEvent.VK_S:
@@ -400,7 +381,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         
         
             //si le perso arrive sur la case tunnel 
-            if(perso.getCaseGrille() == Data.TUNNE)//si on passe sur un tunnel on determine les nouvelles positions
+          /*  if(perso.getCaseGrille() == Data.TUNNE)//si on passe sur un tunnel on determine les nouvelles positions
             {
               if(perso.getNewX() == 9 && perso.getNewY()==5) {
                 perso.setNewX(5);
@@ -409,7 +390,28 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 grille.setGrilleChar(perso.newPosition(grille));
               }
             }
-            
+            */
+                          if(perso.getCaseGrille() == Data.TUNNE)//si on passe sur un tunnel on determine les nouvelles positions
+            {
+               int verify = perso.getNewY();
+               int verifx = perso.getNewX();
+
+              if(verify==2 && verifx == 13) {
+
+                perso.setNewY(17);
+                perso.setCaseGrille('.');
+                grille.setGrilleChar(perso.newPosition(grille));
+                panelNiveau.setGrille(grille); 
+              }
+              if (verify==17 && verifx == 1){
+
+                  perso.setNewY(4);
+                  perso.setCaseGrille('.');
+                  grille.setGrilleChar(perso.newPosition(grille));
+                  panelNiveau.setGrille(grille);
+                }
+        }
+
             if(perso.getCaseGrille() == Data.TONDE){
                 System.out.println("perso sur la case tondeuse");
             }
