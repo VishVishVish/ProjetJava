@@ -188,7 +188,7 @@ public interface Data {
     int POS_PERSO [][] = {{14,4},{11,3},{13,1},{9,9},{13,1},{5,1}};
     
     //positions des monstres du niveau 5
-    int POS_MONSTRE [][] = {{1,1},{10,10}};
+    int POS_MONSTRE [][] = {{1,9},{7,1}};
     
     public static Font fontBouton = new Font("Serif", Font.BOLD, 20); //correspond à la font des boutons du menu principal
 }
