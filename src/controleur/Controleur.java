@@ -136,8 +136,6 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 //monstre.boolActif = false; // on stoppe le déplacement des threads
                 panelNiveau.setNiveau(1);
                 perso = panelNiveau.getPersonnage();
-                
-                System.out.println(perso.getCaractere());
                 fenetre.setFenetre(panelNiveau);
                 boolRefresh = true; //on active le refresh de la page
                 chrono.setTemps(0); //on rénitialise le temps à 0
@@ -145,7 +143,6 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 refreshGrille = new Thread(this);
                 refreshGrille.start();
                 panelNiveau.setGrille(grille);
-                
                 
                 //on lance le chrono
                 break;
@@ -242,13 +239,6 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 panelScore.setListeScores(scores);
                 fenetre.requestFocus();
                 fenetre.setFenetre(panelMenu);
-                break;
-/***PANELVICTOIRE***/
-            case "2":
-                perso = panelNiveau.getPersonnage();
-                perso.setCaractere('é');
-                panelNiveau.setPersonnage(perso);
-                System.out.println(perso.getCaractere());
                 break;
             default:
                 System.out.println("evt detecté mais non traité");

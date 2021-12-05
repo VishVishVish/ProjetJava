@@ -21,7 +21,7 @@ import static modele.Data.fontPolice;
 import modele.Scores;
 
 /**
- * correspond à la page de score 
+ *
  * @author vishn
  */
 public class PanelScore extends JPanel implements Data{
@@ -46,9 +46,6 @@ public class PanelScore extends JPanel implements Data{
     Font fontLabelCategorie = new Font(fontPolice, Font.BOLD, 40);
     Font fontLabel = new Font(fontPolice, Font.BOLD, 30);
     
-    /**
-     * constructeur de la classe PanelScore 
-     */
     public PanelScore(){
         panelHaut = new JPanel();
         panelMilieu = new JPanel();
@@ -130,18 +127,10 @@ public class PanelScore extends JPanel implements Data{
         boutonMenu.addActionListener(controleur);
     }
     
-    /**
-     * modifie la liste des scores 
-     * @param listeScores correspond à la nouvelle liste des scores 
-     */
     public void setListeScores(Scores listeScores){
         this.listeScores = listeScores;
     }
     
-    /**
-     * retourne la nouvelle liste des scores 
-     * @return correspond à la liste des scores 
-     */
     public Scores getListeScores(){
         return listeScores;
     }

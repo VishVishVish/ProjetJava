@@ -20,7 +20,6 @@ public interface Data {
     
     /*CARACTERE CHAR DES CASES DE LA GRILLE*/
     public char PERSO = '&'; // correspond au personnage
-    public char PERS2 = 'é'; // correspond au personnage 2
     public char BLOCK = 'B'; //correspond à un mur statique
     public char WATER = 'x'; //correspond à de l'eau
     public char XATER = 'y'; //correspond à de l'eau utilisé pour le décor
@@ -33,7 +32,19 @@ public interface Data {
     public char BRICK = 'b'; //correspond à la brique
     public char TONDE = 'T'; //correspond à la tondeuse
     
-   
+    /*SPRITE DU JEU, IMAGES CONTENUE DANS LE DOSSIER IMG DU PROJET*/
+    //public ImageIcon TEST = new ImageIcon("img/test.png");
+    //public ImageIcon IMG_PERSO = new ImageIcon("img/perso.png");
+
+    /*
+    public ImageIcon IMG_MONSTRE = new ImageIcon("img/monstre_test.png");
+    public ImageIcon IMG_BLOCK = new ImageIcon("img/block.png");
+    public ImageIcon IMG_WATER = new ImageIcon("img/water.png");
+    public ImageIcon IMG_ICE_N = new ImageIcon("img/ice_n.png");
+    public ImageIcon IMG_ICE_S = new ImageIcon("img/ice_s.png");
+    public ImageIcon IMG_EXIT = new ImageIcon();
+    public ImageIcon IMG_POT_L = new ImageIcon();*/
+    
     /*COULEURS UTILISE POUR L'IHM*/
     public Color COLOR_SNOW = new Color(174,255,255);
     public Color COLOR_ICE = new Color(5,100,255);
@@ -101,21 +112,21 @@ public interface Data {
    
    
    public char LEVEL_2 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
-                               {WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,BLOCK,BLOCK,BLOCK,WATER,WATER,BLOCK,BLOCK,BLOCK,BLOCK,WATER,WATER},//1
-                               {WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,BLOCK,ICE_N,BLOCK,WATER,WATER,BLOCK,BLOCK,EXIT ,BLOCK,WATER,WATER},//2                             
-                               {WATER,WATER,WATER,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER},//3  
-                               {WATER,WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,WATER,WATER},//4  
-                               {WATER,WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//5  
-                               {WATER,WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,WATER,WATER},//6  
-                               {WATER,WATER,WATER,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,WATER,WATER,BLOCK,BLOCK,ICE_N,BLOCK,WATER,WATER},//7  
-                               {WATER,BLOCK,BLOCK,BLOCK,POT_L,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,WATER,WATER,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,WATER},//8  
-                               {WATER,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,WATER},//9  
-                               {WATER,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER},//10  
-                               {WATER,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,BLOCK,BLOCK},//11  
-                               {WATER,BLOCK,BLOCK,BLOCK,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_N,ICE_N,BLOCK},//12  
-                               {WATER,WATER,WATER,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//13  
-                               {WATER,WATER,WATER,WATER,WATER,WATER,BLOCK,ICE_N,BLOCK,WATER,WATER,WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
-                               {WATER,WATER,WATER,WATER,WATER,WATER,BLOCK,BLOCK,BLOCK,WATER,WATER,WATER,WATER,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK}};//15
+                               {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK},//1
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,BLOCK,BLOCK,EXIT ,BLOCK,ICE_N,BLOCK},//2                             
+                               {BLOCK,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK},//3  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//4  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//5  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//6  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK},//7  
+                               {BLOCK,BLOCK,BLOCK,BLOCK,POT_L,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK},//8  
+                               {BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,BLOCK},//9  
+                               {BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK},//10  
+                               {BLOCK,BLOCK,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,BLOCK,BLOCK},//11  
+                               {BLOCK,BLOCK,BLOCK,BLOCK,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_S,ICE_N,ICE_N,BLOCK},//12  
+                               {BLOCK,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK},//13  
+                               {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
+                               {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK}};//15
    
    
    public char LEVEL_1 [][] = { //0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18
@@ -126,9 +137,9 @@ public interface Data {
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,EXIT ,ICE_N,BLOCK,WATER,WATER},//5  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//6  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//7  
-                               {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//8  
+                               {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BRICK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//8  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//9  
-                               {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//10  
+                               {WATER,WATER,BLOCK,ICE_N,ICE_N,TUNNE,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER},//10  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,BLOCK,BLOCK,WATER,WATER},//11  
                                {WATER,WATER,BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK,WATER,WATER,WATER,WATER},//12  
                                {WATER,WATER,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,WATER,WATER,XATER,WATER},//13  
@@ -158,7 +169,7 @@ public interface Data {
     
  
     /*position du perso dans la grille de chaque niveau*/
-    int POS_PERSO [][] = {{4,4},{8,5},{9,9},{13,1},{1,1},{2,2}};
+    int POS_PERSO [][] = {{4,4},{8,3},{9,9},{13,1},{1,1},{2,2}};
     
     //positions des monstres du niveau 5
     int POS_MONSTRE [][] = {{1,1},{10,10}};

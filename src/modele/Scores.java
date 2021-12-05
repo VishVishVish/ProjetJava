@@ -95,7 +95,7 @@ public class Scores {
     }
     
     /**
-     * permet de convertir une donnée numérique dans un format adapté pour le fichier externe exemple : on passe de 12 à     0012
+     * permet de convertir une donnée numérique dans un format adapté pour le fichier externe exemple : 12 -> 0012
      * @param number correspond à une valeur numérique tel que le temps ou le score
      * @return une chaine de 4 caractères représentant la valeur numérique
      */

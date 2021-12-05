@@ -17,8 +17,10 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import modele.Data;
+import static modele.Data.COLOR_BACK;
 import static modele.Data.COLOR_ICE;
 
 /**
@@ -154,7 +156,8 @@ public class PanelVictoire extends JPanel {
     public void enregistreEcouteur(Controleur controleur) {
         boutonValider.addActionListener(controleur);
     }
-
+    
+    
     public void setFocusableBouton(boolean bool) {
         boutonValider.setFocusable(bool);
     }
