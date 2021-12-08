@@ -419,10 +419,26 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             panelNiveau.setGrille(grille);
                    
             if(perso.boolDeplacement) {
-                score+=10;
+                if (chrono.getTemps()<30){
+                    score+=20;
+                }
+                else if (chrono.getTemps()<60){
+                    score+=15;
+                }
+                else if (chrono.getTemps()<90){
+                    score+=10;
+                }
+                else if (chrono.getTemps()<120){
+                    score+=5;
+                }
+                else if (chrono.getTemps()<160){
+                    score+=3;
+                }
+                else{
+                    score+=1;
+                }
                 perso.boolDeplacement = false;
             }
-            
             panelNiveau.setAffichagePanelControle(score,chrono.getTemps());
             try {
                 Thread.sleep(intRefreshGrille);
