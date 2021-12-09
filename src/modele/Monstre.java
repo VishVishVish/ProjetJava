@@ -37,7 +37,7 @@ public class Monstre extends Case implements Runnable, Data{
     
     public boolean refresh; //permet au controleur si on doit actualiser le panelNiveau
     
-    int pause = 700; //correspond à la vitesse de déplacement du monstre en ms, 
+    int pause = 500; //correspond à la vitesse de déplacement du monstre en ms, 
     
     public boolean boolActif;
     

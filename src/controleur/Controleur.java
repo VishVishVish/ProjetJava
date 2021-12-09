@@ -18,6 +18,8 @@ import modele.Brique;
 import modele.Monstre;
 import modele.Save;
 import modele.Scores;
+import modele.Tondeuse;
+import modele.Tunnel;
 import vue.*;
 
 /**
@@ -82,7 +84,11 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     
     Monstre monstreHautBas = new Monstre(0,0,MNSTR, 1);
     Monstre monstreGaucheDroite = new Monstre(0,0,MNSTR,1);
-    Brique brique = new Brique(7,9, BRICK);
+    Brique brique = new Brique(11,7, BRICK);
+    Tunnel tunnel = new Tunnel(13,2,13,17,TUNNE);
+    Tunnel tunnel2 = new Tunnel(1,17,1,3,TUNNE);
+    Tondeuse tondeuse = new Tondeuse(12,15, TONDE);
+    
     
     //attributs de la classe Controleur liès à l'actualisation de la page
     boolean boolRefresh = false;
@@ -184,7 +190,10 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 score = panelNiveau.getScore();
                 monstreHautBas.reset(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1]);
                 monstreGaucheDroite.reset(Data.POS_MONSTRE[1][0],Data.POS_MONSTRE[1][1]);
-                brique = new Brique(7,9, BRICK);
+                brique = new Brique(11,7, BRICK);
+                tunnel = new Tunnel(13,2,13,17,TUNNE);
+                tunnel2 = new Tunnel(1,17,1,3,TUNNE);
+                tondeuse = new Tondeuse(12,15, TONDE);
                 break;
             case "SAUVEGARDER ET QUITTER":
                 boolRefresh = false;
@@ -339,7 +348,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             case KeyEvent.VK_LEFT:
             case KeyEvent.VK_Q:
             case KeyEvent.VK_4:
-                if(grille.getGrilleChar()[perso.getX()][perso.getY()-1]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()-1] == BLOCK)
+                if(grille.getGrilleChar()[perso.getX()][perso.getY()-1]==BRICK && grille.getGrilleChar()[brique.getNewX()][brique.getNewY()-1] == BLOCK)
                     break;
                 perso.deplacementGauche();
                 grille.setGrilleChar(perso.newPosition(grille));
@@ -371,8 +380,12 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             }
             // Si la perso entre en collision avec la brique
             if(perso.getCaseGrille()==Data.BRICK){
-                grille.setGrilleChar(brique.newPosition(grille.getGrilleChar(), perso));
-                perso.setCaseGrille('.');
+                if(perso.getNewX() == brique.getX() && perso.getNewY()==brique.getY()) {
+                    grille.setGrilleChar(brique.newPosition(grille.getGrilleChar(), perso));
+                    perso.setCaseGrille('.');
+                }
+                
+                
             }
             
             //si la personne arrive sur la case exit 
@@ -391,29 +404,36 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
               }
             }
             */
-                          if(perso.getCaseGrille() == Data.TUNNE)//si on passe sur un tunnel on determine les nouvelles positions
+            if(perso.getCaseGrille() == Data.TUNNE)//si on passe sur un tunnel on determine les nouvelles positions
             {
-               int verify = perso.getNewY();
-               int verifx = perso.getNewX();
-
-              if(verify==2 && verifx == 13) {
-
-                perso.setNewY(17);
+              if(perso.getNewX()==tunnel.getX() && perso.getNewY() == tunnel.getY()) {
+                perso.setNewX(tunnel.getNewX());
+                perso.setNewY(tunnel.getNewY());
                 perso.setCaseGrille('.');
                 grille.setGrilleChar(perso.newPosition(grille));
                 panelNiveau.setGrille(grille); 
               }
+              if(perso.getNewX()==tunnel2.getX() && perso.getNewY() == tunnel2.getY()) {
+                perso.setNewX(tunnel2.getNewX());
+                perso.setNewY(tunnel2.getNewY());
+                perso.setCaseGrille('.');
+                grille.setGrilleChar(perso.newPosition(grille));
+                panelNiveau.setGrille(grille); 
+              }
+              /*
               if (verify==17 && verifx == 1){
 
                   perso.setNewY(4);
                   perso.setCaseGrille('.');
                   grille.setGrilleChar(perso.newPosition(grille));
                   panelNiveau.setGrille(grille);
-                }
+                }*/
         }
 
             if(perso.getCaseGrille() == Data.TONDE){
-                System.out.println("perso sur la case tondeuse");
+                //System.out.println("perso sur la case tondeuse");
+                grille.setGrilleChar(tondeuse.newPosition(grille.getGrilleChar(), perso));
+                perso.setCaseGrille('.');
             }
             
             panelNiveau.setGrille(grille);

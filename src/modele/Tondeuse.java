@@ -113,6 +113,7 @@ public class Tondeuse extends Case implements Runnable, Data{
         
         boolean bool = true;
         while(bool){
+            //System.out.println("");
             if(grilleChar[newPosX][newPosY] == Data.ICE_N)
                 grilleChar[newPosX][newPosY] = Data.WATER;
             else if(grilleChar[newPosX][newPosY] == Data.ICE_S)

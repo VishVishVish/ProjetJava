@@ -55,6 +55,9 @@ public class Brique extends Case implements Data{
         //grilleChar[posX][posY] = '.';
         grilleChar[newPosX][newPosY] = caractere;
         
+        posX = newPosX;
+        posY = newPosY;
+        
         
         return grilleChar;
     }
@@ -65,7 +68,15 @@ public class Brique extends Case implements Data{
                 System.out.println("brisiihih");
                 return true;
             }
-        }   
+        }
+        else if(perso.direction == 0){
+            if(grilleChar[posX][posY] == '.'){
+                System.out.println("brisiihih");
+                return true;
+            }
+        }
+        
+        //AJOUTER LIGNE ICI IMPORTANT 
         return false;    
       
     }

@@ -7,19 +7,18 @@ package vue;
 import controleur.Controleur;
 import java.awt.*;    
 import javax.swing.*;   
-import java.awt.event.*;  
 import modele.Data;
 
 /**
- *
+ * correspond à la page de tutoriel expliquant les différentes informations 
  * @author vishn
  */
 public class PanelTuto extends JPanel implements Data{
     
     JLabel label1 = new JLabel("", JLabel.CENTER);
-    JLabel label2 = new JLabel("Page 2 du tuto", JLabel.CENTER);
-    JLabel label3 = new JLabel("Page 3 du tuto", JLabel.CENTER);
-    JLabel label4 = new JLabel("Page 4 du tuto", JLabel.CENTER);
+    JLabel label2 = new JLabel("", JLabel.CENTER);
+    JLabel label3 = new JLabel("", JLabel.CENTER);
+    JLabel label4 = new JLabel("", JLabel.CENTER);
     
     JButton boutonPremier = new JButton("<<");
     JButton boutonPrecedent = new JButton("<");
@@ -38,7 +37,9 @@ public class PanelTuto extends JPanel implements Data{
     JPanel panelMilieu;
     JPanel panelBas;
 
-    
+    /**
+     * constructeur de la classe PanelTuto
+     */
     public PanelTuto(){
         panelMilieu = new JPanel();
         panelBas = new JPanel(new GridLayout(1,3));
@@ -47,11 +48,17 @@ public class PanelTuto extends JPanel implements Data{
         cardLayout = new CardLayout();
         
         panelMilieu.setLayout(new GridLayout(1,5));
-        panelMilieu.setBackground(COLOR_SNOW);
-        label1.setIcon(new ImageIcon(getClass().getResource("/img/exemple_img.png")));
-        label2.setIcon(new ImageIcon(getClass().getResource("/img/ice_n.png")));
-        label3.setIcon(new ImageIcon(getClass().getResource("/img/ice_n.png")));
+        panelMilieu.setBackground(COLOR_BLUE);
+        label1.setIcon(new ImageIcon(getClass().getResource("/img/page_1.png")));
+        label2.setIcon(new ImageIcon(getClass().getResource("/img/page_2.png")));
+        label3.setIcon(new ImageIcon(getClass().getResource("/img/page_3.png")));
         label4.setIcon(new ImageIcon(getClass().getResource("/img/ice_n.png")));
+        
+        label1.setOpaque(true);
+        label2.setOpaque(true);
+        label3.setOpaque(true);
+        label4.setOpaque(true);
+        
         panelMilieu.add(label1,"a");
         panelMilieu.add(label2, "b");
         panelMilieu.add(label3, "c");
@@ -70,19 +77,11 @@ public class PanelTuto extends JPanel implements Data{
             bouton.setFont(fontBouton);
             panelBas.add(bouton, BorderLayout.CENTER);
         }
-        
-        /*
-        for(JLabel label : labels){
-            panelMilieu.add(label);
-        }
-        */
-        
-        
+    
         setLayout(new BorderLayout());
+       
         this.add(panelMilieu, BorderLayout.CENTER);
         this.add(panelBas, BorderLayout.SOUTH);
-        
-     
     }
     
      /**
@@ -99,16 +98,29 @@ public class PanelTuto extends JPanel implements Data{
    
     }
     
+    /**
+     * permet de renvoyer la première page du tuto  
+     */
     public void premier(){
-        System.out.println("ici");
         cardLayout.first(panelMilieu);
     }
+    
+    /**
+     * permet de renvoyer la page précedente du tuto 
+     */
     public void precedent(){
         cardLayout.previous(panelMilieu);
     }
+    
+    /**
+     * permet de renvoyer la page suivante 
+     */
     public void suivant(){
         cardLayout.next(panelMilieu);
     }
+    /**
+     * permet de renvoyer la dernière page du turo
+     */
     public void dernier(){
         cardLayout.last(panelMilieu);
     }

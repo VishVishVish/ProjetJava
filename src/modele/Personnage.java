@@ -61,7 +61,7 @@ public class Personnage extends Case implements Data {
         }
         
         if (potionLeger<=0) {
-            if(caseGrille == Data.ICE_N)//si banquise normal on remplace par de l'eau
+            if(caseGrille == Data.ICE_N || caseGrille == Data.TUNNE)//si banquise normal on remplace par de l'eau
             grilleChar[posX][posY] = Data.WATER;
         else if(caseGrille == Data.ICE_S)//si banquise epaisse on remplace par une banquise normal
             grilleChar[posX][posY] = Data.ICE_N;
@@ -72,7 +72,7 @@ public class Personnage extends Case implements Data {
         }
         caseGrille = grilleChar[newPosX][newPosY]; //on recupère le symbole ou est placé le personnage
         if(caseGrille == Data.POT_L){
-            potionLeger = 5;
+            potionLeger = 9;
             caseGrille = Data.WATER;
            
         }

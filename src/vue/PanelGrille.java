@@ -76,6 +76,12 @@ public class PanelGrille extends JPanel implements Data {
             case Data.TUNNE :
                 label.setIcon(new ImageIcon(getClass().getResource("/img/tunnel.png")));
                 break;    
+            case Data.TONDE :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/tondeuse.png")));
+                break;    
+            case Data.BRICK :
+                label.setIcon(new ImageIcon(getClass().getResource("/img/brique.png")));
+                break;    
             case Data.POT_L :
                 label.setIcon(new ImageIcon(getClass().getResource("/img/potion.png")));
                 break;    
