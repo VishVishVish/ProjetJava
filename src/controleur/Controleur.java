@@ -132,7 +132,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     }
     /**
      * permet de détecter les actions liées principalement aux boutons 
-     * @param evt 
+     * @param evt correspond à l'évènement détecté dans la fenêtre 
      */
     @Override
     public void actionPerformed(ActionEvent evt) {
@@ -149,6 +149,9 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 refreshGrille = new Thread(this);
                 refreshGrille.start();
                 panelNiveau.setGrille(grille);
+                
+                monstreHautBas.boolActif = false;
+                monstreGaucheDroite.boolActif = false;
                 
                 //on lance le chrono
                 break;
@@ -205,25 +208,28 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 break;
 /***PANELNIVEAU***/
             case "\u25B2": //déplacement haut
-                if(grille.getGrilleChar()[perso.getX()-1][perso.getY()]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()] == BLOCK)
+                System.out.println(grille.getGrilleChar()[perso.getX()-2][perso.getY()]);
+                if((grille.getGrilleChar()[perso.getX()-1][perso.getY()]==BRICK || grille.getGrilleChar()[perso.getX()-1][perso.getY()]==TONDE) && (grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()] == BLOCK || grille.getGrilleChar()[tondeuse.getNewX()-1][tondeuse.getNewY()] == BRICK))
+                //if((grille.getGrilleChar()[perso.getX()-1][perso.getY()]==BRICK || grille.getGrilleChar()[perso.getX()-1][perso.getY()]==TONDE) && (grille.getGrilleChar()[perso.getNewX()-2][perso.getNewY()] != ICE_N || grille.getGrilleChar()[perso.getNewX()-2][perso.getNewY()] != ICE_S))
                     break;
                 perso.deplacementHaut();
                 grille.setGrilleChar(perso.newPosition(grille));         
                 break;
             case "\u25BA": //déplacement droite
-                if(grille.getGrilleChar()[perso.getX()][perso.getY()+1]==BRICK && grille.getGrilleChar()[brique.getNewX()][brique.getNewY()+1] == BLOCK)
+                if((grille.getGrilleChar()[perso.getX()][perso.getY()+1]==BRICK || grille.getGrilleChar()[perso.getX()][perso.getY()+1]==TONDE) && grille.getGrilleChar()[brique.getNewX()][brique.getNewY()+1] == BLOCK)
                     break;    
                 perso.deplacementDroite();
                 grille.setGrilleChar(perso.newPosition(grille));     
                 break;
             case "\u25BC": //déplacement bas
-                if(grille.getGrilleChar()[perso.getX()+1][perso.getY()]==BRICK && grille.getGrilleChar()[brique.getNewX()+1][brique.getNewY()] == BLOCK)
+                System.out.println(grille.getGrilleChar()[perso.getX()+2][perso.getY()]);
+                if((grille.getGrilleChar()[perso.getX()+1][perso.getY()]==BRICK || grille.getGrilleChar()[perso.getX()+1][perso.getY()]==TONDE) && grille.getGrilleChar()[perso.getNewX()+1][perso.getNewY()] == BLOCK)
                     break;
                 perso.deplacementBas();
                 grille.setGrilleChar(perso.newPosition(grille));                   
                 break;
             case "\u25C4": //déplacement gauche
-                if(grille.getGrilleChar()[perso.getX()][perso.getY()-1]==BRICK && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()-1] == BLOCK)
+                if((grille.getGrilleChar()[perso.getX()][perso.getY()-1]==BRICK || grille.getGrilleChar()[perso.getX()][perso.getY()-1]==TONDE) && grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()-1] == BLOCK)
                     break;
                 perso.deplacementGauche();
                 grille.setGrilleChar(perso.newPosition(grille));   
@@ -383,9 +389,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 if(perso.getNewX() == brique.getX() && perso.getNewY()==brique.getY()) {
                     grille.setGrilleChar(brique.newPosition(grille.getGrilleChar(), perso));
                     perso.setCaseGrille('.');
-                }
-                
-                
+                }               
             }
             
             //si la personne arrive sur la case exit 

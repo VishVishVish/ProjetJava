@@ -24,6 +24,12 @@ public class Brique extends Case implements Data{
      */
     private char caseGrille;
     
+    /**
+     * constructeur de la classe Brique 
+     * @param x correspond à la coordonnées X de la brique dans la grille du niveau
+     * @param y correspond à la coordonnées Y de la brique dans la grille du niveau
+     * @param caractere correspond au symbole affiché dans la console
+     */
     public Brique(int x, int y, char caractere){
         super(x, y, caractere);
         this.newPosX = posX;
@@ -31,6 +37,12 @@ public class Brique extends Case implements Data{
         this.caseGrille = '.';
     }
     
+    /**
+     * permet le déplacement de la brique dans la grille du niveau en fonction du personnage 
+     * @param grilleChar correspond à la grille de caractère représentant le niveau dans la console
+     * @param perso correspond au personnage 
+     * @return retourne la grille du caractère modifié 
+     */
     public char[][] newPosition(char[][] grilleChar, Personnage perso ){
 
         System.out.println(perso.direction);
@@ -52,7 +64,6 @@ public class Brique extends Case implements Data{
                 break;
         }
 
-        //grilleChar[posX][posY] = '.';
         grilleChar[newPosX][newPosY] = caractere;
         
         posX = newPosX;
@@ -62,6 +73,7 @@ public class Brique extends Case implements Data{
         return grilleChar;
     }
     
+    /*
     public boolean boolCase(char[][] grilleChar, Personnage perso ){
         if(perso.direction == 0){
             if(grilleChar[posX+1][posY] == '.'){
@@ -79,7 +91,7 @@ public class Brique extends Case implements Data{
         //AJOUTER LIGNE ICI IMPORTANT 
         return false;    
       
-    }
+    }*/
     
     /**
      * permet de placer la position du personnage dans la grille 
@@ -108,16 +120,29 @@ public class Brique extends Case implements Data{
     }
     
     
-    
+    /**
+     * permet de déplacer la brique vers le haut 
+     */
     public void deplacementHaut(){
         this.newPosX--; 
     }
+    
+    /**
+     * permet de déplacer la brique vers la droite
+     */
     public void deplacementDroite(){
         this.newPosY++;
     }
+    
+    /**
+     * permet de déplacer la brique vers le gauche
+     */
     public void deplacementGauche(){
         this.newPosY--;
     }
+    /**
+     * permet de déplacer la brique vers le bas
+     */
     public void deplacementBas(){
         this.newPosX++;
     }

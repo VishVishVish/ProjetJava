@@ -28,30 +28,52 @@ public class Monstre extends Case implements Runnable, Data{
      */
     private char caseGrille;
     
-    private boolean boolDirection = true ; //le monstre commence à se déplacer vers la droite
+    /**
+     * permet de modifier la direction du monstre dans le sens opposé, il commence par défaut vers la droite ou par la gauche 
+     */
+    private boolean boolDirection = true ; 
     
     /**
      * correspond au type de monstre
      */
     private int typeMonstre; 
     
-    public boolean refresh; //permet au controleur si on doit actualiser le panelNiveau
+    //public boolean refresh; //permet au controleur si on doit actualiser le panelNiveau
     
-    int pause = 500; //correspond à la vitesse de déplacement du monstre en ms, 
+    /**
+     * correspond à la vitesse de déplacement du monstre en ms
+     */
+    int pause = 500; 
     
+    /**
+     * permet de rendre actif le monstre
+     */
     public boolean boolActif;
     
+    /**
+     * thread du monstre
+     */
     Thread threadMonstre;
     
+    /**
+     * grille du niveau
+     */
     private char [][] grilleChar; 
 
+    /**
+     * constructeur de la classe Monstre
+     * @param posX correspond à la coordonnée X
+     * @param posY correspond à la coordonnée Y
+     * @param caractere
+     * @param typeMonstre 
+     */
     public Monstre(int posX, int posY, char caractere, int typeMonstre){
         super(posX, posY, caractere);
         this.newPosX = posX;
         this.newPosY = posY;
         this.caseGrille = '.';//il commence sur une case banquise fragile (ICE_N)
         this.typeMonstre = typeMonstre; 
-        refresh = false;
+        //refresh = false;
         boolActif = false;
         threadMonstre = new Thread(this);
         threadMonstre.start();
@@ -133,7 +155,7 @@ public class Monstre extends Case implements Runnable, Data{
                     deplacementDroite();
                 }                         
             }
-            refresh = true;
+            //refresh = true;
                 //grille.affichageGrille();
             return grilleChar;
    }
@@ -174,7 +196,7 @@ public class Monstre extends Case implements Runnable, Data{
                     deplacementHaut();
                 }                         
             }
-            refresh = true;
+            //refresh = true;
                 //grille.affichageGrille();
             return grilleChar;
    }

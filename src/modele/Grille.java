@@ -73,6 +73,10 @@ public class Grille implements Data{
         }
     }
     
+    /**
+     * permet de reset la grille
+     * @param grille correspond à la nouvelle grille
+     */
     public void resetGrille(char grille [][]){
         
         grilleChar = new char[15][19];
@@ -84,11 +88,7 @@ public class Grille implements Data{
         }
     }
     
-    public Monstre setMonstre(Monstre monstre){
-        //monstre.newPosition(this.grilleChar);
-        
-        return monstre;
-    }
+ 
     
     /**
      * permet d'afficher la grille du niveau dans la console
@@ -129,8 +129,6 @@ public class Grille implements Data{
         }
         //this.grilleChar = grille; 
      }
-     
-     
      
      /**
       * modifie la case d'une grille du niveau

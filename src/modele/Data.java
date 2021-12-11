@@ -9,10 +9,9 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.ArrayList;
 /**
- *
- * @author vishn
+ * regroupe la conception des niveaux, les couleurs, la police, la positions des monstres, des personnages dans chaque niveaux
+ * @author Vishnou Peroumalnaikar, Alexis Libeaud
  */
-
 
 
 public interface Data {
@@ -162,7 +161,7 @@ public interface Data {
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK}};//15
     
-   
+    //regroupe les différents niveaux 
     char LEVELS [][][] = {LEVEL_0,LEVEL_1,LEVEL_2,LEVEL_3,LEVEL_4,LEVEL_5 };
     
  

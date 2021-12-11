@@ -11,7 +11,7 @@ package modele;
  *
  * @author laurentdavenne
  */
-public class Tondeuse extends Case implements Runnable, Data{
+public class Tondeuse extends Case implements Data{
     /**
     * correspond à la nouvelle position X du personnage ECEMAN
     */
@@ -25,26 +25,16 @@ public class Tondeuse extends Case implements Runnable, Data{
      */
     private char caseGrille;
      
-   
     /**
      * permet de savoir s'il faut refresh la grille 
      */
     public boolean refresh; //permet au controleur si on doit actualiser le panelNiveau
     
     /**
-     * permet de régler la vitesse du monstre
+     * correspond au score 
      */
-    int pause = 200; //correspond à la vitesse de déplacement du monstre en ms, 
-    
-    /**
-     * permet de rendre actif le monstre
-     */
-    public boolean boolActif;
-    
-    /**
-     * le thread de la tondeuse
-     */
-    Thread threadTondeuse;
+    private int score;
+
     
     /**
      * la grille du niveau 
@@ -64,9 +54,7 @@ public class Tondeuse extends Case implements Runnable, Data{
         this.newPosY = posY;
         this.caseGrille = '.';//il commence sur une case banquise fragile (ICE_N)
         refresh = false;
-        boolActif = false;
-        threadTondeuse = new Thread(this);
-        threadTondeuse.start();
+       
         
     }
     /**
@@ -83,30 +71,16 @@ public class Tondeuse extends Case implements Runnable, Data{
         //this.boolDirection = true;
     }
     
-    /**
-     * permet de lancer le monstre
-     */
-    public void start(){
-        boolActif = true;  
-    }
-    
-    /*
-    public void pause(){
-        threadMonstre.start();
-    }*/
-    
-    /**
-     * correspond au run du monstre qu'il effectue en simultanée au main lorqu'il est actif 
-     */
-    @Override
-    public void run(){
-        while(boolActif) {
-   
-            
-       }     
-    }
-    
   
+            
+     
+    
+    /**
+     * permet de modifier la position de la tondeuse 
+     * @param grilleChar correspond à la grille de caractère 
+     * @param perso correspond au personnage 
+     * @return 
+     */
     public char[][] newPosition(char[][] grilleChar, Personnage perso ){
 
         System.out.println(perso.direction);
@@ -159,7 +133,11 @@ public class Tondeuse extends Case implements Runnable, Data{
         return grilleChar;
     }
    
-   
+   /**
+    * permet de se placer dans la grille du niveau
+    * @param grilleNiveau correspond à la grille du niveau
+    * @return retourne la grille du niveau 
+    */
     public char[][] setPosition(Grille grilleNiveau){
         char[][] grille = grilleNiveau.getGrilleChar();
         caseGrille = grille[posX][posY];
@@ -189,42 +167,96 @@ public class Tondeuse extends Case implements Runnable, Data{
          return grilleChar;
      }
     
-    
+    /**
+     * permet d'effectuer un déplacement vers le haut
+     */
     public void deplacementHaut(){
         this.newPosX--; 
     }
+    
+    /**
+     * permet d'effectuer un déplacement vers la droite 
+     */
     public void deplacementDroite(){
         this.newPosY++;
     }
+    
+    /**
+     * permet d'effectuer un déplacement vers la gauche 
+     */
     public void deplacementGauche(){
         this.newPosY--;
     }
+    
+    /**
+     * permet d'effectuer un déplacement vers le bas 
+     */
     public void deplacementBas(){
         this.newPosX++;
     }
     
+    /**
+     * retourne la futur coordonnées X de la tondeuse 
+     * @return correspond à la futur coordonnées X de la tondeuse 
+     */
     public int getNewX(){
         return this.newPosX;
     }
     
+    /**
+     * retourne la futur coordonnées Y de la tondeuse 
+     * @return correspond à la futur coordonnées Y de la tondeuse
+     */
     public int getNewY(){
         return this.newPosY;
     }
     
+    /**
+     * retourne la case ou est posé la tondeuse 
+     * @return 
+     */
     public char getCaseGrille(){
         return this.caseGrille;
     }
     
+    /**
+     * modifie la futur coordonnée X de la tondeuse 
+     * @param x coorespond à la futur coordonnée X de la tondeuse 
+     */
     public void setNewX(int x){
         this.newPosX = x;
     }
     
+    /**
+     * modifie la futur coordonnées Y de la tondeuse 
+     * @param y coorespond à la futur coordonnée Y de la tondeuse
+     */
     public void setNewY(int y){
         this.newPosY = y;
     }
     
+    /**
+     * modifie la case ou est placé la tondeuse 
+     * @param caseGrille 
+     */
     public void setCaseGrille(char caseGrille){
         this.caseGrille = caseGrille;
+    }
+    
+    /**
+     * retourne le score obtenue par la tondeuse 
+     * @return coorespond au score 
+     */
+    public int getScore() {
+        return score;
+    }
+    
+    /**
+     * modifie le score 
+     * @param score correspond au score
+     */
+    public void setScore(int score) {
+        this.score = score;
     }
     
 }
