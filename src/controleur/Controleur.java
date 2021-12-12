@@ -23,8 +23,8 @@ import modele.Tunnel;
 import vue.*;
 
 /**
- *
- * @author vishn
+ * correspond au controleur qui va controler les actions du jeu
+ * @author Vishnou Peroumalnaikar
  */
 public class Controleur implements Runnable, ActionListener, KeyListener, Data{
     
@@ -81,19 +81,43 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
      */
     Scores scores;
 
-    
+    /**
+     * correspond au monstre se déplaçant de haut en bas du niveau 5
+     */
     Monstre monstreHautBas = new Monstre(0,0,MNSTR, 1);
+    /**
+     * correspond au monstre se déplaçant de gauche à droite du niveau 5
+     */
     Monstre monstreGaucheDroite = new Monstre(0,0,MNSTR,1);
+    /**
+     * correspond à la brique du niveau 3
+     */
     Brique brique = new Brique(11,7, BRICK);
+    /**
+     * correspond au 1er tunnel du niveau 4
+     */
     Tunnel tunnel = new Tunnel(13,2,13,17,TUNNE);
+    /**
+     * correspond au 2ème tunnel du niveau 4
+     */
     Tunnel tunnel2 = new Tunnel(1,17,1,3,TUNNE);
+    /**
+     * correspond à la tondeuse du niveau 3
+     */
     Tondeuse tondeuse = new Tondeuse(12,15, TONDE);
-    
-    
-    //attributs de la classe Controleur liès à l'actualisation de la page
+
+    /**
+     * attributs de la classe Controleur liès à l'actualisation de la page
+     */
     boolean boolRefresh = false;
-    Thread refreshGrille; //permet de refresh la grille du niveau
-    int intRefreshGrille = 50; //durée entre chaque refresh
+    /**
+     * permet de refresh la grille du niveau
+     */
+    Thread refreshGrille;
+    /**
+     * durée entre chaque refresh
+     * */
+    int intRefreshGrille = 50; 
     int score = 0;
     
 
@@ -101,7 +125,11 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
      * Constructeur de la classe controleur permet de coordonnées les actions/réactions du jeu 
      * @param panelMenu correspond au panel du menu principal du jeu 
      * @param panelNiveau correspond au panel des niveaux du jeu
+     * @param panelScore correspond au panel des tableaux des scores 
+     * @param panelTuto correspond au panel de la page des règles 
+     * @param panelBonus correspond à la page bonus 
      * @param fenetre correspond à la fenêtre du jeu
+     * @param panelVictoire correspond au panel de la page de fin de partie 
      */
     public Controleur(PanelMenu panelMenu, PanelNiveau panelNiveau, PanelScore panelScore,  PanelTuto panelTuto, PanelBonus panelBonus, PanelVictoire panelVictoire, Fenetre fenetre){
         this.panelMenu = panelMenu;
@@ -153,6 +181,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 monstreHautBas.boolActif = false;
                 monstreGaucheDroite.boolActif = false;
                 
+                
                 //on lance le chrono
                 break;
             case "CONTINUER":
@@ -165,6 +194,15 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 refreshGrille = new Thread(this);
                 refreshGrille.start();
                 score = panelNiveau.getScore();
+                
+                //on reset la position des entités et des objets 
+                
+                monstreHautBas.reset(Data.POS_MONSTRE[0][0],Data.POS_MONSTRE[0][1]);
+                monstreGaucheDroite.reset(Data.POS_MONSTRE[1][0],Data.POS_MONSTRE[1][1]);
+                brique = new Brique(11,7, BRICK);
+                tunnel = new Tunnel(13,2,13,17,TUNNE);
+                tunnel2 = new Tunnel(1,17,1,3,TUNNE);
+                tondeuse = new Tondeuse(12,15, TONDE);
                 
                 break;
             case "SCORE":
@@ -179,8 +217,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
             case "RÈGLES":
                 fenetre.setFenetre(panelTuto);     
                 break;
-            case "MENU":
-                System.out.println("ect");
+            case "MENU":  
                 fenetre.setFenetre(panelMenu);     
                 break;
             case "QUITTER":
@@ -200,7 +237,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 break;
             case "SAUVEGARDER ET QUITTER":
                 boolRefresh = false;
-                System.out.println("save fait");
+                
                 save.setTemps(chrono.getTemps());
                 panelNiveau.setTemps(chrono.getTemps());
                 save.ecrire(panelNiveau.getNumNiveau(), panelNiveau.getScore(), panelNiveau.getTemps());
@@ -208,7 +245,7 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 break;
 /***PANELNIVEAU***/
             case "\u25B2": //déplacement haut
-                System.out.println(grille.getGrilleChar()[perso.getX()-2][perso.getY()]);
+                //System.out.println(grille.getGrilleChar()[perso.getX()-2][perso.getY()]);
                 if((grille.getGrilleChar()[perso.getX()-1][perso.getY()]==BRICK || grille.getGrilleChar()[perso.getX()-1][perso.getY()]==TONDE) && (grille.getGrilleChar()[brique.getNewX()-1][brique.getNewY()] == BLOCK || grille.getGrilleChar()[tondeuse.getNewX()-1][tondeuse.getNewY()] == BRICK))
                 //if((grille.getGrilleChar()[perso.getX()-1][perso.getY()]==BRICK || grille.getGrilleChar()[perso.getX()-1][perso.getY()]==TONDE) && (grille.getGrilleChar()[perso.getNewX()-2][perso.getNewY()] != ICE_N || grille.getGrilleChar()[perso.getNewX()-2][perso.getNewY()] != ICE_S))
                     break;
@@ -262,6 +299,9 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
           
     }
     
+    /**
+     * permet de passer au prochain niveau 
+     */
     public void prochainNiveau(){
         int niveau = panelNiveau.getNumNiveau()+1;
         panelNiveau.setTemps(chrono.getTemps());
@@ -314,11 +354,19 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 break;
         }
     }
-
+    
+    /**
+     * méthode non utilisé
+     * @param ke correspond à un évènement 
+     */
     @Override
     public void keyTyped(KeyEvent ke) {
     }
-
+    
+    /**
+     * permet d'éffectuer des actions en fonction des évènements lié au touche de clavier qu'il a détecté 
+     * @param key correspond à une action lié lorqu'on appuie sur une touche de clavier 
+     */
     @Override
     public void keyPressed(KeyEvent key) {
         
@@ -368,12 +416,18 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
         
 
     }
-
+    /**
+     * méthode non utilisé
+     * @param ke correspond à un évènement 
+     */
     @Override
     public void keyReleased(KeyEvent ke) {
         //System.out.println("key released");
     }
-
+    
+    /**
+     * permet l'actualisation de la page, la détection des colision entre le personnage et les monstres, brique, tunnel et tondeuse, et l'augmentation du score
+     */
     @Override
     public void run() {
           
@@ -466,6 +520,8 @@ public class Controleur implements Runnable, ActionListener, KeyListener, Data{
                 }
                 perso.boolDeplacement = false;
             }
+            if(panelBonus.radioBouton.isSelected())
+                grille.affichageGrille();
             panelNiveau.setAffichagePanelControle(score,chrono.getTemps());
             try {
                 Thread.sleep(intRefreshGrille);

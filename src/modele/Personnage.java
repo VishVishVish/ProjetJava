@@ -24,6 +24,9 @@ public class Personnage extends Case implements Data {
      */
     private char caseGrille = '.';
     
+    /**
+     * correspond à la direction du personnage 
+     */
     public int direction;
     
     /**
@@ -31,6 +34,9 @@ public class Personnage extends Case implements Data {
      */
     public boolean boolDeplacement = false;
     
+    /**
+     * correspond au nombre de déplacement sous l'état de la potion de légéreté 
+     */
     int potionLeger = 0;
    
     /**

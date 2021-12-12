@@ -29,11 +29,19 @@ public class Fenetre extends JFrame implements Data{
         //pack();
         setVisible(true);  
     }
-    
+    /**
+     * permet de mettre sur écoute la fenêtre
+     * 
+     * @param controleur correspond à la classe gérant tous les évènements de l'application (déplacement, bouton,...)
+     */
      public void enregistreEcouteur(Controleur controleur) {
         this.addKeyListener(controleur);
     }
     
+     /**
+      * modifie le contenue de la fenêtre 
+      * @param container nouveau contenue de la fenêtre
+      */
     public void setFenetre(Container container){
         
         this.setContentPane(container);

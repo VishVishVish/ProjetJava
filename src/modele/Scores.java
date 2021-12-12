@@ -26,14 +26,15 @@ public class Scores {
     ArrayList<String[]> classement = new ArrayList<>();
     File file = new File("score.txt");
 
-    public Scores()  {
-        
-        //InputStream in = this.getClass().getResourceAsStream("/score.txt");
-        
-        
+    public Scores()  {      
+        //InputStream in = this.getClass().getResourceAsStream("/score.txt"); 
         this.lire();
     }
     
+    
+    /**
+     * permet de lire les données des scores dans le fichier externe save.txt
+     */
     public void lire() {
         Scanner scanner;
         try {
@@ -69,13 +70,19 @@ public class Scores {
         }
     }
     
+    /**
+     * permet d'ajouter un score dans le fichier de sauvegarde
+     * @param nom coorespond au nom du joueur (seulement les 4 premières caractères)
+     * @param score correspond au score du joueur 
+     * @param temps correspond au temps du joueur 
+     */
     public void addScore(String nom, int score, int temps) {
         
         if(nom.length() != 4){
             if(nom.length()>4) {
-                System.out.println("string = " + nom);
+                //System.out.println("string = " + nom);
                 nom = String.valueOf(nom.charAt(0)) + String.valueOf(nom.charAt(1)) + String.valueOf(nom.charAt(2)) + String.valueOf(nom.charAt(3)); 
-                System.out.println("string = " + nom);
+                //System.out.println("string = " + nom);
             }
             else {
                 nom = "----";
@@ -83,8 +90,6 @@ public class Scores {
         }
     
         String newScore = nom + convertNumberToString(score) + convertNumberToString(temps);
-        
- 
         try {
             PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("score.txt", true)));
             out.println(newScore);
@@ -95,7 +100,7 @@ public class Scores {
     }
     
     /**
-     * permet de convertir une donnée numérique dans un format adapté pour le fichier externe exemple : 12 -> 0012
+     * permet de convertir une donnée numérique dans un format adapté pour le fichier externe exemple : 12 devient 0012
      * @param number correspond à une valeur numérique tel que le temps ou le score
      * @return une chaine de 4 caractères représentant la valeur numérique
      */
@@ -117,14 +122,13 @@ public class Scores {
         }
         
         return string;
-            
-        
+
     }
     
     /**
      * 
-     * @param i
-     * @return 
+     * @param i correspond à l'indice du classement 
+     * @return le score du classement
      */
     public String[] getClassement(int i){
         return classement.get(i);
@@ -158,7 +162,6 @@ public class Scores {
         return scoreMax;            
     }
     
-   
     /**
      * retourne la liste des scores 
      * @return correspond à la liste des scores

@@ -18,18 +18,30 @@ public interface Data {
     
     
     /*CARACTERE CHAR DES CASES DE LA GRILLE*/
-    public char PERSO = '&'; // correspond au personnage
-    public char BLOCK = 'B'; //correspond à un mur statique
-    public char WATER = 'x'; //correspond à de l'eau
-    public char XATER = 'y'; //correspond à de l'eau utilisé pour le décor
-    public char ICE_N = '.'; // banquise normal, N pour normal
-    public char ICE_S = 'o'; // banquise epais, S pour strong 
-    public char EXIT  = 'S'; //correspond à la case de sortie pour le personnage 
-    public char MNSTR = 'M'; //correspond au monstre
-    public char POT_L = 'L'; //correspond à la potion de legerete
-    public char TUNNE = 'T'; //correspond à la brique
-    public char BRICK = 'b'; //correspond à la brique
-    public char TONDE = 'd'; //correspond à la tondeuse
+    /**correspond au personnage**/
+    public char PERSO = '&';
+    /**correspond à un mur statique**/
+    public char BLOCK = 'B';
+    /**correspond à de l'eau**/
+    public char WATER = 'x';
+    /**correspond à de l'eau utilisé pour le décor**/
+    public char XATER = 'y';
+    /**banquise normal, N pour normal**/
+    public char ICE_N = '.';
+    /**banquise epais, S pour strong **/
+    public char ICE_S = 'o';
+    /**correspond à la case de sortie pour le personnage **/
+    public char EXIT  = 'S';
+    /**correspond au monstre**/
+    public char MNSTR = 'M';
+    /**correspond à la potion de legerete**/
+    public char POT_L = 'L';
+    /**correspond à la brique**/
+    public char TUNNE = 'T';
+    /**correspond à la brique**/
+    public char BRICK = 'b';
+    /**correspond à la tondeuse**/
+    public char TONDE = 'd'; 
     
     /*SPRITE DU JEU, IMAGES CONTENUE DANS LE DOSSIER IMG DU PROJET*/
     //public ImageIcon TEST = new ImageIcon("img/test.png");
@@ -45,12 +57,13 @@ public interface Data {
     public ImageIcon IMG_POT_L = new ImageIcon();*/
     
     /*COULEURS UTILISE POUR L'IHM*/
+    
     public Color COLOR_SNOW = new Color(174,255,255);
     public Color COLOR_ICE = new Color(5,100,255);
     public Color COLOR_BLUE = new Color(0,68,181);
     public Color COLOR_BACK = new Color(58,220,254);
     
-    /*POLICE */
+    /**POLICE**/
     String fontPolice = "Agency FB";
     
     boolean boolRefresh = false;
@@ -161,14 +174,14 @@ public interface Data {
                                {BLOCK,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,ICE_N,BLOCK},//14                                 
                                {BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK,BLOCK}};//15
     
-    //regroupe les différents niveaux 
+    /**regroupe les différents niveaux**/
     char LEVELS [][][] = {LEVEL_0,LEVEL_1,LEVEL_2,LEVEL_3,LEVEL_4,LEVEL_5 };
     
  
-    /*position du perso dans la grille de chaque niveau*/
+    /**regroupe les positions du personage dans la grille de chaque niveau**/
     int POS_PERSO [][] = {{14,4},{11,3},{13,1},{9,9},{13,1},{5,1}};
     
-    //positions des monstres du niveau 5
+    /**regtoupe les positions des monstres du niveau 5**/
     int POS_MONSTRE [][] = {{1,9},{7,1}};
     
     public static Font fontBouton = new Font("Serif", Font.BOLD, 20); //correspond à la font des boutons du menu principal

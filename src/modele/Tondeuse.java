@@ -79,15 +79,12 @@ public class Tondeuse extends Case implements Data{
      * permet de modifier la position de la tondeuse 
      * @param grilleChar correspond à la grille de caractère 
      * @param perso correspond au personnage 
-     * @return 
+     * @return correspond à la grille qui à été modifié par la tondeuse 
      */
     public char[][] newPosition(char[][] grilleChar, Personnage perso ){
-
-        System.out.println(perso.direction);
         
         boolean bool = true;
         while(bool){
-            //System.out.println("");
             if(grilleChar[newPosX][newPosY] == Data.ICE_N)
                 grilleChar[newPosX][newPosY] = Data.WATER;
             else if(grilleChar[newPosX][newPosY] == Data.ICE_S)
@@ -213,7 +210,7 @@ public class Tondeuse extends Case implements Data{
     
     /**
      * retourne la case ou est posé la tondeuse 
-     * @return 
+     * @return correspond à la case ou est placé la tondeuse 
      */
     public char getCaseGrille(){
         return this.caseGrille;
@@ -237,7 +234,7 @@ public class Tondeuse extends Case implements Data{
     
     /**
      * modifie la case ou est placé la tondeuse 
-     * @param caseGrille 
+     * @param caseGrille correspond à la case ou est placé la tondeuse
      */
     public void setCaseGrille(char caseGrille){
         this.caseGrille = caseGrille;

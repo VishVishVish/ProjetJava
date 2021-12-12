@@ -34,11 +34,8 @@ public class PanelGrille extends JPanel implements Data {
        for(int li = 0; li<grille.getNbrLigne();li++){
             for(int co = 0; co<grille.getNbrColonne();co++){
                 JLabel labelCaseGrille = convertToImage(grille.getGrilleChar()[li][co]);
-                //labelCaseGrille.setSize(50,50);
-                
-              
                 this.add(labelCaseGrille);
-                //this.add(this.convertToJLabel(grille.getGrille()[li][co]));
+                
             }
         }  
     }
